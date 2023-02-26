@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-First, install the dependencies with `pnpn install` the development server:
+First, install the dependencies with `pnpm install` the development server:
 
 ```bash
 pnpm dev
