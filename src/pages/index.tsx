@@ -1,18 +1,18 @@
 import Head from 'next/head'
 import {useQuery} from "react-query";
+import {get} from "@/utils/fetchMiddleware";
 
 // const inter = Inter({subsets: ['latin']})
 
 const getTwitterLink = () => {
-    return fetch("http://localhost:8000/twitter/get-twitter-login/")
-        .then((response) => response.json())
+    return get("twitter/get-twitter-login/")
 }
 
 
 export default function Home() {
 
     const {isLoading, isError, isSuccess, data} = useQuery(["getTwitterLink"], getTwitterLink)
-
+    console.log(data)
     const handleLoginWithTwitter = () => {
         window.location = data
     }
@@ -25,6 +25,7 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
+            {/*<Layout>*/}
             <main className={`h-screen flex justify-center items-center`}>
                 <div>
                     <button className={`bg-blue-500 px-8 py-4 rounded-full text-white`}
@@ -33,6 +34,7 @@ export default function Home() {
                     </button>
                 </div>
             </main>
+            {/*</Layout>*/}
         </>
     )
 }
