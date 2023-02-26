@@ -11,7 +11,7 @@ const getTwitterLink = () => {
 
 export default function Home() {
 
-    const {data: userData} = useQuery(['user'], () => getUser)
+    const {data: userData} = useQuery(['user'], getUser)
     const {data} = useQuery(["getTwitterLink"], getTwitterLink)
 
     const handleLoginWithTwitter = () => {
