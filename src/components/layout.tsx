@@ -7,11 +7,7 @@ interface LayoutProps {
 }
 
 export const getUser = () => {
-    return get('auth/user/').then(response => {
-        if (response.status === 401) {
-            return null
-        }
-    })
+    return get('auth/user/')
 }
 
 export default function Layout({children}: LayoutProps) {

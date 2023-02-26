@@ -30,23 +30,18 @@ export const get = async (url: string) => {
         method: 'GET',
         headers: headers
     }).then(response => {
-        if (response.status === 401) {
-            localforage.clear()
-            return Promise.resolve(response)
-        }
         return response.json()
     }).catch(error => {
-        localforage.clear()
+        if (error.status === 401) {
+            refreshToken().then(response => console.log({response})).catch(error => {
+                localforage.clear()
+            })
+        }
         return Promise.reject(error)
     })
 }
 
-export const refreshToken = () => {
-    return post('auth/token/refresh/', {
-        refresh: localforage.getItem('user').then((data) => {
-            if (data?.refreshToken) {
-                return user.refreshToken
-            }
-        })
-    })
+export const refreshToken = async () => {
+    const refreshToken = await localforage.getItem('user').then(data => data?.refreshToken)
+    return post('auth/token/refresh/', {refresh: refreshToken})
 }

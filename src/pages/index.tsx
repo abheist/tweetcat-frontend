@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import {useQuery} from "react-query";
 import {get} from "@/utils/fetchMiddleware";
+import {getUser} from "@/components/layout";
 
 // const inter = Inter({subsets: ['latin']})
 
@@ -8,11 +9,11 @@ const getTwitterLink = () => {
     return get("twitter/get-twitter-login/")
 }
 
-
 export default function Home() {
 
-    const {isLoading, isError, isSuccess, data} = useQuery(["getTwitterLink"], getTwitterLink)
-    console.log(data)
+    const {data: userData} = useQuery(['user'], () => getUser)
+    const {data} = useQuery(["getTwitterLink"], getTwitterLink)
+
     const handleLoginWithTwitter = () => {
         window.location = data
     }
@@ -32,6 +33,10 @@ export default function Home() {
                             onClick={() => handleLoginWithTwitter()}>
                         Login with Twitter
                     </button>
+
+                    <code>
+                        <pre className={`mt-8`}>{JSON.stringify(userData, undefined, 2)}</pre>
+                    </code>
                 </div>
             </main>
             {/*</Layout>*/}
