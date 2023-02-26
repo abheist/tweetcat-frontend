@@ -2,13 +2,14 @@ import Head from 'next/head'
 import {useQuery} from "react-query";
 import {useRouter} from "next/router";
 import * as localforage from "localforage";
+import Layout from "@/components/layout";
 
 interface TwitterVerifyTokens {
     oauth_token: string
     oauth_verifier: string
 }
 
-interface UserTokenData {
+export interface UserTokenData {
     accessToken: string
     refreshToken: string
     user: {
@@ -49,16 +50,18 @@ export default function Home() {
 
     return (
         <>
-            <Head>
-                <title>Loading...</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <link rel="icon" href="/favicon.ico"/>
-            </Head>
-            <main className={`h-screen flex justify-center items-center`}>
-                <div>
-                    <div className={`mt-8`}>{JSON.stringify(data)}</div>
-                </div>
-            </main>
+            {/*<Layout>*/}
+                <Head>
+                    <title>Loading...</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                    <link rel="icon" href="/favicon.ico"/>
+                </Head>
+                <main className={`h-screen flex justify-center items-center`}>
+                    <div>
+                        <div className={`mt-8`}>{JSON.stringify(data)}</div>
+                    </div>
+                </main>
+            {/*</Layout>*/}
         </>
     )
 }
