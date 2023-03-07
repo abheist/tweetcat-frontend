@@ -22,10 +22,10 @@ export const post = async (url: string, data: any, authorization = true) => {
         body: JSON.stringify(data),
         headers: headers
     }
-    if (authorization) {
-        // @ts-ignore
-        requestOptions["credentials"] = "include"
-    }
+    // if (authorization) {
+    //     // @ts-ignore
+    //     requestOptions["credentials"] = "include"
+    // }
     return fetch(SERVER_BASE_URL + url, requestOptions)
 }
 
