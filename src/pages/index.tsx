@@ -1,13 +1,27 @@
 import Head from 'next/head'
-import {useQuery} from "react-query";
+import {useMutation, useQuery} from "react-query";
 import {getUser} from "@/components/layout";
+import {useState} from "react";
+import {post} from "@/utils/fetchMiddleware";
 
 // const inter = Inter({subsets: ['latin']})
 
+export const makeTweet = (data) => {
+    return post('twitter/post/', {tweet: data})
+}
 
 export default function Home() {
 
     const {data: userData} = useQuery(['user'], getUser)
+    const mutation = useMutation(makeTweet)
+
+    const [tweet, setTweet] = useState(() => '')
+
+    function handleClick(e) {
+        e.preventDefault()
+        console.log("Handle click!", tweet)
+        mutation.mutate(tweet)
+    }
 
     return (
         <>
@@ -19,9 +33,23 @@ export default function Home() {
             </Head>
             {/*<Layout>*/}
             <main className={`h-screen flex justify-center items-center`}>
-                <code>
-                    <pre className={`mt-8`}>{JSON.stringify(userData, undefined, 2)}</pre>
-                </code>
+                <div>
+                    <code>
+                        <pre className={`mt-8`}>{JSON.stringify(userData, undefined, 2)}</pre>
+                    </code>
+                    <form>
+                        <div className={`flex flex-col justify-end items-end gap-2`}>
+                            <textarea name="tweetArea" id="tweetArea" className={`border-2 rounded px-3 py-2`}
+                                      autoFocus
+                                      value={tweet}
+                                      onChange={(e) => setTweet(e.target.value)}/>
+                            <button className={`bg-blue-400 rounded-full py-2 px-4`}
+                                    onClick={(e) => handleClick(e)}>
+                                Tweet
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </main>
             {/*</Layout>*/}
         </>
