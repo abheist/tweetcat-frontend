@@ -39,18 +39,17 @@ export const get = async (url: string) => {
         headers: headers
     }).then(response => {
         if (response.status === 401) {
+            console.log("from success")
             refreshToken()
         }
         return response.json()
+    }).catch(error => {
+        if (error.status === 401) {
+            console.log("from error")
+            refreshToken()
+        }
+        return Promise.reject(error)
     })
-        .catch(error => {
-            if (error.status === 401) {
-                refreshToken().then(response => console.log({response})).catch(error => {
-                    logout()
-                })
-            }
-            return Promise.reject(error)
-        })
 }
 
 interface refreshAPIModel {
@@ -65,22 +64,22 @@ export const refreshToken = async () => {
     console.log({refreshToken})
 
     if (refreshToken) {
-        post('auth/token/refresh/', {refresh: refreshToken})
-            .then(response => {
-                if (response.status === 401) {
-                    logout()
-                } else {
-                    const data = response.json()
-                    const userData = {
-                        accessToken: data?.access,
-                        refreshToken: data?.refresh
-                    }
-                    localforage.setItem('user', userData)
-                }
-            })
-            .catch(error => {
+        post(
+            'auth/token/refresh/', {refresh: refreshToken}
+        ).then(response => {
+            if (response.status === 401) {
                 logout()
-            })
+            } else {
+                const data = response.json()
+                const userData = {
+                    accessToken: data?.access,
+                    refreshToken: data?.refresh
+                }
+                localforage.setItem('user', userData)
+            }
+        }).catch(error => {
+            logout()
+        })
     } else {
         logout()
     }
