@@ -2,27 +2,31 @@ import localforage from "localforage";
 
 export const SERVER_BASE_URL = "http://localhost:8000/"
 
-async function getHaders() {
+async function getHaders(authorization = true) {
     const accessToken = await localforage.getItem('user').then(data => data?.accessToken)
     console.log({'accessToken': !!accessToken})
     const headers = {
         "Content-Type": "application/json",
     }
-    if (!!accessToken) {
+    if (!!accessToken && authorization) {
         // @ts-ignore
         headers["Authorization"] = `Bearer ${accessToken}`
     }
     return headers;
 }
 
-export const post = async (url: string, data: any) => {
-    const headers = await getHaders();
-    return fetch(SERVER_BASE_URL + url, {
+export const post = async (url: string, data: any, authorization = true) => {
+    const headers = await getHaders(authorization);
+    const requestOptions = {
         method: 'POST',
-        credentials: "include",
         body: JSON.stringify(data),
         headers: headers
-    })
+    }
+    if (authorization) {
+        // @ts-ignore
+        requestOptions["credentials"] = "include"
+    }
+    return fetch(SERVER_BASE_URL + url, requestOptions)
 }
 
 export const getUser = localforage.getItem('user')
@@ -65,17 +69,19 @@ export const refreshToken = async () => {
 
     if (refreshToken) {
         post(
-            'auth/token/refresh/', {refresh: refreshToken}
-        ).then(response => {
+            'auth/token/refresh/', {refresh: refreshToken}, false
+        ).then(async response => {
             if (response.status === 401) {
                 logout()
             } else {
-                const data = response.json()
+                const data = await response.json()
+                console.log({data})
                 const userData = {
                     accessToken: data?.access,
                     refreshToken: data?.refresh
                 }
-                localforage.setItem('user', userData)
+                console.log({userData})
+                await localforage.setItem('user', userData)
             }
         }).catch(error => {
             logout()
