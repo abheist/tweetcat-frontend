@@ -4,7 +4,7 @@ import {post} from "@/utils/fetchMiddleware";
 import {useMutation} from "react-query";
 
 export const createCheckOutSession = (lookupKey: string) => {
-    return post('payments/create-checkout-session/', {lookupKey: lookupKey})
+    return post('payments/checkout-session/', {lookupKey: lookupKey})
 }
 
 export const ProductDisplay = () => {

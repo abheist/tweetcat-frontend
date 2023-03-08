@@ -3,8 +3,8 @@ import {useEffect, useState} from "react";
 import {post} from "@/utils/fetchMiddleware";
 import {useMutation} from "react-query";
 
-export const customerPortal = (sessionId: string) => {
-    return post('payments/customer-portal-url/', {sessionId: sessionId})
+export const paymentSuccessful = (sessionId: string) => {
+    return post('payments/successful/', {sessionId: sessionId})
 }
 
 
@@ -12,10 +12,8 @@ export default function Success() {
     const [sessionId, setSessionId] = useState(() => '')
     const router = useRouter()
 
-    const mutation = useMutation(customerPortal)
+    const mutation = useMutation(paymentSuccessful)
 
-
-    // TODO: send the session_id to backend for further processing
     useEffect(() => {
         const {session_id: sessionId}: any = router.query
         if (sessionId) {
@@ -23,20 +21,16 @@ export default function Success() {
         }
     }, [router])
 
-    const handleClick = async (data: any) => {
-        const response = await mutation.mutateAsync(sessionId)
-        const result = await response.json()
-        if (result.redirect) {
-            window.location = result.redirect;
+    useEffect(() => {
+        if (sessionId) {
+            const response = mutation.mutate(sessionId)
         }
-    }
+    }, [sessionId])
 
 
     return (
         <div>
             <div className={`text-white`}>Your payment was successfull!</div>
-            {/*TODO: Move this customer portal button in settings or to navigation bar, so everyone can see it.*/}
-            <button className={`btn`} onClick={handleClick}>Customer Portal</button>
         </div>
     )
 }
