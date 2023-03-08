@@ -6,7 +6,7 @@ import {post} from "@/utils/fetchMiddleware";
 
 // const inter = Inter({subsets: ['latin']})
 
-export const makeTweet = (data) => {
+export const makeTweet = (data: any) => {
     return post('twitter/post/', {tweet: data})
 }
 
