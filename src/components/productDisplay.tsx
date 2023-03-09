@@ -11,9 +11,8 @@ export const ProductDisplay = () => {
     const {register, handleSubmit, watch, formState: {errors}} = useForm()
     const mutation = useMutation(createCheckOutSession)
 
-    const onSubmit = async (data: any) => {
-        console.log(data)
-        const response = await mutation.mutateAsync(data.lookupKey)
+    const handleClick = async (lookupKey: string) => {
+        const response = await mutation.mutateAsync(lookupKey)
         const result = await response.json()
         if (result.redirect) {
             window.location = result.redirect;
@@ -21,20 +20,32 @@ export const ProductDisplay = () => {
     }
 
     return (
-        <section className={`p-4 bg-white w-72`}>
-            <div className="card">
-                <div className="">
-                    <h3>Starter plan</h3>
-                    <h5>$20.00 / month</h5>
+        <div className={`mt-4 flex gap-24`}>
+            <section className={`p-4 bg-white w-72`}>
+                <div className="card">
+                    <div className="text-primary">
+                        <h3>Monthly plan</h3>
+                        <h5>$20.00 / month</h5>
+                    </div>
                 </div>
-            </div>
-            <form onSubmit={handleSubmit(onSubmit)} className={`mt-4`}>
-                {/* Add a hidden field with the lookup_key of your Price */}
-                <input defaultValue="nap_app" {...register("lookupKey")} type="hidden"/>
 
-                <button className={`btn`} type="submit">
+                <button className={`btn`} type="submit" onClick={() => handleClick('nap_app_monthly')}>
                     Checkout
                 </button>
-            </form>
-        </section>)
+            </section>
+            <section className={`p-4 bg-white w-72`}>
+                <div className="card">
+                    <div className="text-primary">
+                        <h3>Yearly plan</h3>
+                        <h5>200.00 / yearly</h5>
+                    </div>
+                </div>
+
+                <button className={`btn`} type="button" onClick={() => handleClick('nap_app_yearly')}>
+                    Checkout
+                </button>
+            </section>
+        </div>
+    )
 };
+
