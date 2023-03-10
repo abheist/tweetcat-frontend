@@ -15,6 +15,23 @@ async function getHaders(authorization = true) {
     return headers;
 }
 
+function handleFetchAndError(url: string, requestOptions: { headers: { "Content-Type": string }; method: string; body?: string }) {
+    return fetch(SERVER_BASE_URL + url, requestOptions)
+        .then(response => {
+            if (response.status === 401) {
+                console.log("from success")
+                refreshToken()
+            }
+            return response.json()
+        }).catch(error => {
+            if (error.status === 401) {
+                console.log("from error")
+                refreshToken()
+            }
+            return Promise.reject(error)
+        })
+}
+
 export const post = async (url: string, data: any, authorization = true) => {
     const headers = await getHaders(authorization);
     const requestOptions = {
@@ -22,38 +39,24 @@ export const post = async (url: string, data: any, authorization = true) => {
         body: JSON.stringify(data),
         headers: headers
     }
-    // if (authorization) {
-    //     // @ts-ignore
-    //     requestOptions["credentials"] = "include"
-    // }
-    return fetch(SERVER_BASE_URL + url, requestOptions)
+    return handleFetchAndError(url, requestOptions);
 }
 
 export const getUser = localforage.getItem('user')
 
 export function logout() {
     localforage.clear()
+    // @ts-ignore
     window.location = '/login'
 }
 
 export const get = async (url: string) => {
     const headers = await getHaders();
-    return fetch(SERVER_BASE_URL + url, {
+    const requestOptions = {
         method: 'GET',
         headers: headers
-    }).then(response => {
-        if (response.status === 401) {
-            console.log("from success")
-            refreshToken()
-        }
-        return response.json()
-    }).catch(error => {
-        if (error.status === 401) {
-            console.log("from error")
-            refreshToken()
-        }
-        return Promise.reject(error)
-    })
+    }
+    return handleFetchAndError(url, requestOptions);
 }
 
 interface refreshAPIModel {
@@ -64,6 +67,7 @@ interface refreshAPIModel {
 }
 
 export const refreshToken = async () => {
+    // @ts-ignore
     const refreshToken = await localforage.getItem('user').then(data => data?.refreshToken)
     console.log({refreshToken})
 
