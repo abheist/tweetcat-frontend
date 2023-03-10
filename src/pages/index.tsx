@@ -4,6 +4,7 @@ import {getUser} from "@/components/layout";
 import {post} from "@/utils/fetchMiddleware";
 import CustomerPortalButton from "@/components/customerPortalButton";
 import {TweetArea} from "@/components/tweetArea";
+import Link from "next/link";
 
 // const inter = Inter({subsets: ['latin']})
 
@@ -24,13 +25,17 @@ export default function Home() {
             </Head>
             {/*<Layout>*/}
             <main className={''}>
-                <div>
+                <div className={`space-y-4`}>
                     <code>
                         <pre className={``}>{JSON.stringify(userData, undefined, 2)}</pre>
                     </code>
                     <div className={`space-y-4`}>
                         <TweetArea/>
-                        <CustomerPortalButton/>
+                        <div className={`space-x-4`}>
+                            <CustomerPortalButton/>
+                            <Link className={`btn`} href={`/subscribe`}>Subscribe</Link>
+                        </div>
+
                     </div>
                 </div>
             </main>

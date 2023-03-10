@@ -14,7 +14,7 @@ export function TweetArea({}) {
 
 
     return <div>
-        <form className={`space-4`}>
+        <form className={`space-y-4`}>
             <div>
                 <textarea name="tweetArea" id="tweetArea" className={`border-2 rounded px-3 py-2`}
                           autoFocus
