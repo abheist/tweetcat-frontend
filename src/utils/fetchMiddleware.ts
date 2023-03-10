@@ -16,7 +16,7 @@ async function getHaders(authorization = true) {
     return headers;
 }
 
-function handleFetchAndError(url: string, requestOptions: { headers: { "Content-Type": string }; method: string; body?: string }) {
+function handleFetchAndError(url: string, requestOptions: any) {
     return fetch(SERVER_BASE_URL + url, requestOptions)
         .then(response => {
             if (response.status === 401) {
@@ -31,6 +31,15 @@ function handleFetchAndError(url: string, requestOptions: { headers: { "Content-
             }
             return Promise.reject(error)
         })
+}
+
+export const get = async (url: string) => {
+    const headers = await getHaders();
+    const requestOptions = {
+        method: 'GET',
+        headers: headers
+    }
+    return handleFetchAndError(url, requestOptions);
 }
 
 export const post = async (url: string, data: any, authorization = true) => {
@@ -51,14 +60,6 @@ export function logout() {
     window.location = '/login'
 }
 
-export const get = async (url: string) => {
-    const headers = await getHaders();
-    const requestOptions = {
-        method: 'GET',
-        headers: headers
-    }
-    return handleFetchAndError(url, requestOptions);
-}
 
 interface refreshAPIModel {
     data: {
