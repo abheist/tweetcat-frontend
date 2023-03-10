@@ -3,6 +3,7 @@ import localforage from "localforage";
 export const SERVER_BASE_URL = "http://localhost:8000/"
 
 async function getHaders(authorization = true) {
+    // @ts-ignore
     const accessToken = await localforage.getItem('user').then(data => data?.accessToken)
     console.log({'accessToken': !!accessToken})
     const headers = {
