@@ -13,7 +13,7 @@ export const makeTweet = (data: any) => {
 }
 
 export default function Home() {
-    const {data: userData} = useQuery(['user'], getUser)
+    const {data: response} = useQuery(['user'], getUser)
 
     return (
         <>
@@ -26,9 +26,7 @@ export default function Home() {
             {/*<Layout>*/}
             <main className={''}>
                 <div className={`space-y-4`}>
-                    <code>
-                        <pre className={``}>{JSON.stringify(userData?.data, undefined, 2)}</pre>
-                    </code>
+                    <h2>👋 Hey {response?.data?.firstName}</h2>
                     <div className={`space-y-4`}>
                         <TweetArea/>
                         <div className={`space-x-4`}>

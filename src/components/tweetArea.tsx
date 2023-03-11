@@ -25,6 +25,7 @@ export function TweetArea({}) {
             </div>
             <div>
                 <button className={`btn`}
+                        disabled={!!!tweet || tweet.length > 140}
                         onClick={handleClick}>
                     Tweet
                 </button>
