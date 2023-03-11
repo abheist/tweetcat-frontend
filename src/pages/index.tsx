@@ -1,15 +1,15 @@
 import Head from 'next/head'
 import {useQuery} from "react-query";
 import {getUser} from "@/components/layout";
-import {post} from "@/utils/fetchMiddleware";
 import CustomerPortalButton from "@/components/customerPortalButton";
 import {TweetArea} from "@/components/tweetArea";
 import Link from "next/link";
+import {axiosPrivate} from "@/utils/axiosPrivate";
 
 // const inter = Inter({subsets: ['latin']})
 
 export const makeTweet = (data: any) => {
-    return post('twitter/post/', {tweet: data})
+    return axiosPrivate.post('twitter/post/', {tweet: data})
 }
 
 export default function Home() {
@@ -27,7 +27,7 @@ export default function Home() {
             <main className={''}>
                 <div className={`space-y-4`}>
                     <code>
-                        <pre className={``}>{JSON.stringify(userData, undefined, 2)}</pre>
+                        <pre className={``}>{JSON.stringify(userData?.data, undefined, 2)}</pre>
                     </code>
                     <div className={`space-y-4`}>
                         <TweetArea/>

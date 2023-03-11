@@ -1,10 +1,10 @@
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
-import {post} from "@/utils/fetchMiddleware";
 import {useMutation} from "react-query";
+import {axiosPrivate} from "@/utils/axiosPrivate";
 
 export const paymentSuccessful = (sessionId: string) => {
-    return post('payments/successful/', {sessionId: sessionId})
+    return axiosPrivate.post('payments/successful/', {sessionId: sessionId})
 }
 
 
@@ -23,10 +23,17 @@ export default function Success() {
 
     useEffect(() => {
         if (sessionId) {
-            const response = mutation.mutate(sessionId)
+            handleSuccess()
         }
     }, [sessionId])
 
+    const handleSuccess = async () => {
+        const response = await mutation.mutateAsync(sessionId)
+        const data = response?.data
+        if (data?.success) {
+            await router.push('/')
+        }
+    }
 
     return (
         <div>

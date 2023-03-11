@@ -1,8 +1,8 @@
 import {useMutation} from "react-query";
-import {post} from "@/utils/fetchMiddleware";
+import {axiosPrivate} from "@/utils/axiosPrivate";
 
 export const customerPortal = () => {
-    return post('payments/customer-portal/', {})
+    return axiosPrivate.post('payments/customer-portal/', {})
 }
 
 export default function CustomerPortalButton() {

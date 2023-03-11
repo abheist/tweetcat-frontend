@@ -1,10 +1,10 @@
 import {useForm} from "react-hook-form";
 import React from "react";
-import {post} from "@/utils/fetchMiddleware";
 import {useMutation} from "react-query";
+import {axiosPrivate} from "@/utils/axiosPrivate";
 
 export const createCheckOutSession = (lookupKey: string) => {
-    return post('payments/checkout-session/', {lookupKey: lookupKey})
+    return axiosPrivate.post('payments/checkout-session/', {lookupKey: lookupKey})
 }
 
 export const ProductDisplay = () => {
@@ -13,9 +13,9 @@ export const ProductDisplay = () => {
 
     const handleClick = async (lookupKey: string) => {
         const response = await mutation.mutateAsync(lookupKey)
-        const result = await response.json()
-        if (result.redirect) {
-            window.location = result.redirect;
+        const data = response.data
+        if (data.redirect) {
+            window.location = data.redirect;
         }
     }
 
