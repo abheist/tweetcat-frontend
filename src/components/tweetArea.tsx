@@ -16,7 +16,8 @@ export function TweetArea({}) {
     return <div>
         <form className={`space-y-4`}>
             <div>
-                <textarea name="tweetArea" id="tweetArea" className={`border-2 rounded px-3 py-2`}
+                <textarea placeholder="What's happening?"
+                          className="textarea textarea-bordered textarea-md w-full max-w-xs"
                           autoFocus
                           value={tweet}
                           onChange={(e) => setTweet(e.target.value)}>
