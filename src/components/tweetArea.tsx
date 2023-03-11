@@ -17,7 +17,7 @@ export function TweetArea({}) {
         <form className={`space-y-4`}>
             <div>
                 <textarea placeholder="What's happening?"
-                          className="textarea textarea-bordered textarea-md w-full max-w-xs"
+                          className="textarea textarea-bordered textarea-md w-full max-w-xs text-gray-800"
                           autoFocus
                           value={tweet}
                           onChange={(e) => setTweet(e.target.value)}>
