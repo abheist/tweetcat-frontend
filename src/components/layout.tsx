@@ -1,13 +1,13 @@
 import {ReactNode} from "react";
-import {get} from "@/utils/fetchMiddleware";
 import {useQuery} from "react-query";
+import {axiosPrivate} from "@/utils/axiosPrivate";
 
 interface LayoutProps {
     children: ReactNode
 }
 
 export const getUser = () => {
-    return get('auth/user/')
+    return axiosPrivate.get('auth/user/')
 }
 
 export default function Layout({children}: LayoutProps) {

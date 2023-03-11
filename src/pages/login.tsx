@@ -1,28 +1,30 @@
 import {useQuery} from "react-query";
 import Head from "next/head";
-import {get, getUser} from "@/utils/fetchMiddleware";
-import {useEffect} from "react";
 import {useRouter} from "next/router";
+import {axiosPublic} from "@/utils/axiosPublic";
+import {getUser} from "@/components/layout";
+import {useEffect} from "react";
 
 const getTwitterLink = () => {
-    return get("twitter/get-twitter-login/")
+    return axiosPublic.get("twitter/get-twitter-login/")
 }
 
 export default function Login({}) {
-    const {data} = useQuery(["getTwitterLink"], getTwitterLink)
+    const {isError, isLoading, data: userData, error, status} = useQuery(['user'], () => getUser())
+    const {data: twitterLink} = useQuery(["getTwitterLink"], getTwitterLink)
 
     const router = useRouter()
 
     useEffect(() => {
-        getUser.then(user => {
-            if (!!user) {
-                router.push('/')
-            }
-        });
-    }, [getUser])
+        if (!!userData?.data.pk) {
+            router.push('/')
+        }
+    }, [userData])
 
     const handleLoginWithTwitter = () => {
-        window.location = data
+        // @ts-ignore
+        console.log(data)
+        window.location = twitterLink?.data
     }
 
     return (
