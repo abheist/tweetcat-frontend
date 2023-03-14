@@ -2,10 +2,11 @@ import Head from 'next/head'
 import {useQuery} from "react-query";
 import {useRouter} from "next/router";
 import * as localforage from "localforage";
+import {useEffect, useState} from "react";
 
 interface TwitterVerifyTokens {
-    oauth_token: string
-    oauth_verifier: string
+    oauthToken: string
+    oauthVerifier: string
 }
 
 export interface UserTokenData {
@@ -33,14 +34,26 @@ const verifyToken = (data: TwitterVerifyTokens) => {
 
 
 export default function Home() {
+    const [oauthToken, setOauthToken] = useState(() => "")
+    const [oauthVerifier, setOauthVerifier] = useState(() => "")
 
     const router = useRouter()
+    const query = router.query;
 
-    const {oauth_token, oauth_verifier} = router.query;
+    const {isLoading, isError, isSuccess, data} = useQuery(["getTwitterLink", oauthToken, oauthVerifier],
+        () => verifyToken({oauthToken, oauthVerifier}),
+        {enabled: !!(oauthToken && oauthVerifier)}
+    )
 
-    const {isLoading, isError, isSuccess, data} = useQuery(["getTwitterLink", oauth_token],
-        () => verifyToken({oauth_token, oauth_verifier}),
-        {enabled: !!(oauth_token && oauth_verifier)})
+    useEffect(() => {
+        if (query?.oauth_token && typeof query?.oauth_token === "string") {
+            setOauthToken(query?.oauth_token)
+        }
+        if (query?.oauth_verifier && typeof query?.oauth_verifier === "string") {
+            setOauthVerifier(query?.oauth_verifier)
+        }
+    }, [query])
+
 
     if (data) {
         console.log(data)

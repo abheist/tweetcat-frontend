@@ -1,29 +1,16 @@
 import {useQuery} from "react-query";
 import Head from "next/head";
-import {useRouter} from "next/router";
 import {axiosPublic} from "@/utils/axiosPublic";
-import {getUser} from "@/components/layout";
-import {useEffect} from "react";
 
 const getTwitterLink = () => {
     return axiosPublic.get("twitter/get-twitter-login/")
 }
 
 export default function Login({}) {
-    const {isError, isLoading, data: userData, error, status} = useQuery(['user'], () => getUser())
     const {data: twitterLink} = useQuery(["getTwitterLink"], getTwitterLink)
 
-    const router = useRouter()
-
-    useEffect(() => {
-        if (!!userData?.data.pk) {
-            router.push('/')
-        }
-    }, [userData])
-
+    // TODO: check if user is logged-in, if user is logged in, redirect the user to home page
     const handleLoginWithTwitter = () => {
-        // @ts-ignore
-        console.log(data)
         window.location = twitterLink?.data
     }
 
