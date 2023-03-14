@@ -6,7 +6,7 @@ axios.defaults.baseURL = process.env.NEXT_PUBLIC_SERVER_URL
 
 axios.interceptors.request.use(
     async (config) => {
-        const accessToken = await localforage.getItem('user').then(data => data?.accessToken)
+        const accessToken = await localforage.getItem('user').then((data: any) => data?.accessToken)
 
         if (accessToken) {
             // @ts-ignore
@@ -28,7 +28,7 @@ axios.interceptors.response.use(
 
         if (error?.response?.status === 401 && !config?.sent) {
             config.sent = true
-            const result = await refreshToken()
+            const result: any = await refreshToken()
             if (result?.access) {
                 config.headers = {
                     ...config.headers,
