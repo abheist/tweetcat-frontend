@@ -8,11 +8,11 @@ export const customerPortal = () => {
 export default function CustomerPortalButton() {
     const mutation = useMutation(customerPortal)
 
-    const handleClick = async (data: any) => {
+    const handleClick = async () => {
         const response = await mutation.mutateAsync()
-        const result = await response.json()
-        if (result.redirect) {
-            window.location = result.redirect;
+        const data = response.data
+        if (data.redirect) {
+            window.location = data.redirect;
         }
     }
 
