@@ -1,49 +1,23 @@
 import Head from 'next/head'
-import {useQuery} from "react-query";
+import {useMutation} from "react-query";
 import {useRouter} from "next/router";
 import * as localforage from "localforage";
 import {useEffect, useState} from "react";
+import {axiosPublic} from "@/utils/axiosPublic";
 
-interface TwitterVerifyTokens {
-    oauthToken: string
-    oauthVerifier: string
+const verifyToken = (data: any) => {
+    return axiosPublic.post("auth/token/refresh/", data)
 }
-
-export interface UserTokenData {
-    accessToken: string
-    refreshToken: string
-    user: {
-        pk: number
-        username: string
-        email: string
-        firstName: string
-        lastName: string
-    }
-}
-
-const verifyToken = (data: TwitterVerifyTokens) => {
-    return fetch("http://localhost:8000/twitter/verify-twitter-login/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
-        .then((response) => response.json())
-}
-
 
 export default function Home() {
     const [oauthToken, setOauthToken] = useState(() => "")
     const [oauthVerifier, setOauthVerifier] = useState(() => "")
+    const [data, setData] = useState(() => "")
 
     const router = useRouter()
     const query = router.query;
 
-    const {isLoading, isError, isSuccess, data} = useQuery(["getTwitterLink", oauthToken, oauthVerifier],
-        () => verifyToken({oauthToken, oauthVerifier}),
-        {enabled: !!(oauthToken && oauthVerifier)}
-    )
+    const mutation = useMutation(verifyToken)
 
     useEffect(() => {
         if (query?.oauth_token && typeof query?.oauth_token === "string") {
@@ -54,15 +28,25 @@ export default function Home() {
         }
     }, [query])
 
+    useEffect(() => {
+        if (oauthToken && oauthVerifier) {
+            handleSuccess()
+        }
+    }, [oauthToken, oauthVerifier])
 
-    if (data) {
-        console.log(data)
-        localforage.setItem('user', data).then(res => router.push('/'))
+    const handleSuccess = async () => {
+        const response = await mutation.mutateAsync({oauthToken, oauthVerifier})
+        const data = response.data
+        if (data) {
+            setData(data)
+            console.log(data)
+            localforage.setItem('user', data).then(res => router.push('/'))
+        }
     }
+
 
     return (
         <>
-            {/*<Layout>*/}
             <Head>
                 <title>Loading...</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -73,7 +57,6 @@ export default function Home() {
                     <div className={`mt-8`}>{JSON.stringify(data)}</div>
                 </div>
             </main>
-            {/*</Layout>*/}
         </>
     )
 }
