@@ -6,27 +6,27 @@ import {useEffect, useState} from "react";
 import {axiosPublic} from "@/utils/axiosPublic";
 
 const verifyToken = (data: any) => {
-    return axiosPublic.post("auth/token/refresh/", data)
+    return axiosPublic.post("twitter/verify-twitter-login/", data)
 }
 
-export default function Home() {
+export default function TwitterSuccess() {
     const [oauthToken, setOauthToken] = useState(() => "")
     const [oauthVerifier, setOauthVerifier] = useState(() => "")
     const [data, setData] = useState(() => "")
 
     const router = useRouter()
-    const query = router.query;
-
     const mutation = useMutation(verifyToken)
 
     useEffect(() => {
-        if (query?.oauth_token && typeof query?.oauth_token === "string") {
-            setOauthToken(query?.oauth_token)
+        const {oauth_token, oauth_verifier}: any = router.query;
+
+        if (oauth_token) {
+            setOauthToken(oauth_token)
         }
-        if (query?.oauth_verifier && typeof query?.oauth_verifier === "string") {
-            setOauthVerifier(query?.oauth_verifier)
+        if (oauth_verifier) {
+            setOauthVerifier(oauth_verifier)
         }
-    }, [query])
+    }, [router])
 
     useEffect(() => {
         if (oauthToken && oauthVerifier) {
