@@ -9,6 +9,7 @@ const Home = () => {
         <Layout>
             <div className={`container mx-auto px-48 flex justify-center`}>
                 <div className={`space-y-16`}>
+                    {/*TODO: add a daily quote here, just daily quote, nothing else, keep it minimal*/}
                     <HomeStats/>
                     <div className={`flex justify-between space-x-16`}>
                         <div className={`w-1/2`}>
