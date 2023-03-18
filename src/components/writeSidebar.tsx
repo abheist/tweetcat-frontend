@@ -1,5 +1,5 @@
 export function WriteSidebar() {
-    return <div className={`w-80 min-h-screen bg-base-200`}>
+    return <div className={`w-80 min-h-screen bg-base-200 border-r`}>
         <div className="tabs tabs-boxed flex justify-around my-4">
             <a className="tab tab-md tab-active">Drafts</a>
             <a className="tab tab-md">Scheduled</a>
