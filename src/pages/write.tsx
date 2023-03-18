@@ -2,7 +2,6 @@ import React from 'react';
 import {WriteSidebar} from "@/components/writeSidebar";
 import ContentEditable from "react-contenteditable";
 import sanitizeHtml from 'sanitize-html';
-import {Header} from "@/components/header";
 
 function SingleTweetTextarea(props: { onChange: (evt: any) => void, html: string }) {
     return <div className={`flex gap-x-2`}>
@@ -67,7 +66,12 @@ const Write = () => {
         <div className={`flex`}>
             <WriteSidebar/>
             <div className={`flex-grow`}>
-                <Header />
+                <div className="navbar">
+                    <div className={`flex-grow flex justify-end gap-x-2`}>
+                        <button className="btn btn-outline btn-xs btn-primary">Schedule</button>
+                        <button className="btn btn-outline btn-xs btn-primary">Tweet Now</button>
+                    </div>
+                </div>
                 <div className={`flex-grow flex justify-center items-center mt-16`}>
                     <div>
                         <SingleTweetTextarea onChange={onContentChange} html={content}/>
