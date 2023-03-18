@@ -1,27 +1,37 @@
 import {FiCalendar, FiFeather, FiHome, FiTrendingUp} from "react-icons/fi";
+import {ReactNode} from "react";
+import Link from "next/link";
 
-function SideBarAppIcon({icon, tooltip}: any) {
+interface SideBarAppIconProps {
+    icon: ReactNode
+    tooltip?: string
+    link: string
+}
+
+function SideBarAppIcon({icon, tooltip, link}: SideBarAppIconProps) {
     return (
         <div className="tooltip tooltip-right" data-tip={tooltip}>
-            <button className="btn btn-ghost">
-                {icon}
-            </button>
+            <Link href={link}>
+                <button className="btn btn-ghost">
+                    {icon}
+                </button>
+            </Link>
         </div>
     );
 }
 
 export default function Sidebar() {
     return (
-        <div className={`flex w-16 border-r min-h-screen bg-blue-100 py-4`}>
+        <div className={`flex fixed w-16 border-r h-screen bg-blue-100 py-4`}>
             <div className={`flex-grow flex flex-col items-center`}>
-                <SideBarAppIcon icon={"N"} tooltip={`Niyam`}/>
+                <SideBarAppIcon icon={"N"} link={'/'}/>
 
                 <div className={`flex-grow`}></div>
 
-                <SideBarAppIcon icon={<FiHome/>} tooltip={`Home`}/>
-                <SideBarAppIcon icon={<FiFeather/>} tooltip={`Tweet`}/>
-                <SideBarAppIcon icon={<FiCalendar/>} tooltip={`Calendar`}/>
-                <SideBarAppIcon icon={<FiTrendingUp/>} tooltip={`Analytics`}/>
+                <SideBarAppIcon icon={<FiHome/>} tooltip={`Home`} link={`/home`}/>
+                <SideBarAppIcon icon={<FiFeather/>} tooltip={`Tweet`} link={`tweet`}/>
+                <SideBarAppIcon icon={<FiCalendar/>} tooltip={`Calendar`} link={`calender`}/>
+                <SideBarAppIcon icon={<FiTrendingUp/>} tooltip={`Analytics`} link={`analytics`}/>
 
                 <div className={`flex-grow`}></div>
 
