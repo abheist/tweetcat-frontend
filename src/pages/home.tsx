@@ -6,7 +6,7 @@ import {UpcomingEvents} from "@/components/upcomingEvents";
 
 const Home = () => {
     return (
-        <Layout>
+        <Layout className={`py-16`}>
             <div className={`container mx-auto px-48 flex justify-center`}>
                 <div className={`space-y-16`}>
                     {/*TODO: add a daily quote here, just daily quote, nothing else, keep it minimal*/}
