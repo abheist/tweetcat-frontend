@@ -1,5 +1,4 @@
 import {ReactNode} from "react";
-import {useQuery} from "react-query";
 import {axiosPrivate} from "@/utils/axiosPrivate";
 
 interface LayoutProps {
@@ -12,20 +11,9 @@ export const getUser = () => {
 
 export default function Layout({children}: LayoutProps) {
 
-    const {isError, isLoading, data, error, status} = useQuery(['user'], () => getUser())
-
-    if (data) {
-        return <div>data: {JSON.stringify({data, error})}</div>
-    }
-
-    if (error) {
-        return <div>error: {JSON.stringify(error)}</div>
-    }
-
     return (
-        <>
-            Hello from Layout
+        <div className={`py-16`}>
             {children}
-        </>
+        </div>
     )
 }

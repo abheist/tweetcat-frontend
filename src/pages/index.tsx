@@ -23,7 +23,6 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            {/*<Layout>*/}
             <main className={''}>
                 <div className={`space-y-4`}>
                     <h2>👋 Hey {response?.data?.firstName}</h2>
@@ -37,7 +36,6 @@ export default function Home() {
                     </div>
                 </div>
             </main>
-            {/*</Layout>*/}
         </>
     )
 }
