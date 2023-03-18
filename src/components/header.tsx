@@ -1,11 +1,11 @@
 export function Header() {
-    return <div>
-        <div className="navbar mx-auto px-56">
+    return <div className={`container mx-auto lg:px-48`}>
+        <div className="navbar">
             <div className="flex-1">
                 <a className="btn btn-ghost normal-case text-xl">Niyam</a>
             </div>
             <div className={`flex-grow`}>
-                <ul className="menu menu-compact menu-vertical lg:menu-horizontal bg-base-100 rounded-box shadow-primary">
+                <ul className="menu menu-compact menu-vertical md:menu-horizontal bg-base-100 rounded-box shadow-primary">
                     {/*TODO: Icons can be added here*/}
                     <li><a>Dashboard</a></li>
                     <li><a>Write</a></li>
