@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function Header() {
     return <div className={`container mx-auto lg:px-48`}>
         <div className="navbar">
@@ -7,11 +9,11 @@ export function Header() {
             <div className={`flex-grow`}>
                 <ul className="menu menu-compact menu-vertical md:menu-horizontal bg-base-100 rounded-box shadow-primary">
                     {/*TODO: Icons can be added here*/}
-                    <li><a>Dashboard</a></li>
-                    <li><a>Write</a></li>
-                    <li><a>Calender</a></li>
-                    <li><a>Analytics</a></li>
-                    <li><a>Settings</a></li>
+                    <li><Link href={`/home`}>Dashboard</Link></li>
+                    <li><Link href={`/write`}>Write</Link></li>
+                    <li><Link href={`/calender`}>Calender</Link></li>
+                    <li><Link href={`/analytics`}>Analytics</Link></li>
+                    <li><Link href={`/settings`}>Settings</Link></li>
                 </ul>
             </div>
             <div className="flex-none">
