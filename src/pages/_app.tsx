@@ -9,7 +9,7 @@ export default function App({Component, pageProps}: AppProps) {
     const [queryClient] = React.useState(() => new QueryClient());
 
     return (
-        <div data-theme="winter" className={`bg-slate-50`}>
+        <div data-theme="winter" className={`min-h-screen bg-slate-50`}>
             <QueryClientProvider client={queryClient}>
                 <Component {...pageProps} />
                 <ReactQueryDevtools initialIsOpen={false}/>
