@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export function Header() {
-    return <div className={`container mx-auto lg:px-48`}>
+    return <div className={``}>
         <div className="navbar">
             <div className="flex-1">
                 <a className="btn btn-ghost normal-case text-xl">Niyam</a>

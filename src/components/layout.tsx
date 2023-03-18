@@ -14,7 +14,7 @@ export default function Layout({children}: LayoutProps) {
 
     return (
         <>
-            <Header/>
+            <div className={`container mx-auto lg:px-48`}><Header/></div>
             <div className={`py-16`}>
                 {children}
             </div>

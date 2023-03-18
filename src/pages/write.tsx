@@ -66,12 +66,17 @@ const Write = () => {
     return (
         <div className={`flex`}>
             <WriteSidebar/>
-            <div className={`flex-grow flex justify-center items-center`}>
-                <div>
-                    <SingleTweetTextarea onChange={onContentChange} html={content}/>
-                    <SingleTweetTextarea onChange={onContentChange} html={content}/>
-                    <SingleTweetTextarea onChange={onContentChange} html={content}/>
-                    <SingleTweetTextarea onChange={onContentChange} html={content}/>
+            <div className={`flex-grow`}>
+                <Header />
+                <div className={`flex-grow flex justify-center items-center mt-16`}>
+                    <div>
+                        <SingleTweetTextarea onChange={onContentChange} html={content}/>
+                        <SingleTweetTextarea onChange={onContentChange} html={content}/>
+                        <SingleTweetTextarea onChange={onContentChange} html={content}/>
+                        <SingleTweetTextarea onChange={onContentChange} html={content}/>
+                        <SingleTweetTextarea onChange={onContentChange} html={content}/>
+                        <SingleTweetTextarea onChange={onContentChange} html={content}/>
+                    </div>
                 </div>
             </div>
         </div>
