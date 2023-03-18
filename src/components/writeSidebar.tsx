@@ -11,7 +11,9 @@ export function WriteSidebar() {
             </li>
             <li className={`px-6 py-4 bg-white border-l-4 border-l-primary group relative`}>
                 <div
-                    className={`absolute py-2 px-4 right-0 flex gap-x-2 bg-gradient-to-l from-white to-white/80 invisible group-hover:visible`}>
+                    className={`absolute py-2 px-4 right-0 flex gap-x-2 bg-gradient-to-l from-white to-white/80 
+                                transition-opacity duration-500 ease-in-out
+                                opacity-0  group-hover:opacity-100`}>
                     <button className="btn btn-xs btn-square btn-outline">
                         E
                     </button>
