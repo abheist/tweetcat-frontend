@@ -24,6 +24,7 @@
     "react-contenteditable": "^3.3.7",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.5",
+    "react-icons": "^4.8.0",
     "react-query": "^3.39.3",
     "sanitize-html": "^2.10.0",
     "twitter-text": "^3.1.0",
