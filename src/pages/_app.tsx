@@ -12,7 +12,7 @@ export default function App({Component, pageProps}: AppProps) {
         <div data-theme="winter" className={`min-h-screen bg-slate-50`}>
             <QueryClientProvider client={queryClient}>
                 <Component {...pageProps} />
-                <ReactQueryDevtools initialIsOpen={false}/>
+                <ReactQueryDevtools initialIsOpen={false} position={`bottom-right`}/>
             </QueryClientProvider>
         </div>
     )
