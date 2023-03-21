@@ -12,7 +12,7 @@ export function ScheduleEvent() {
                 →
             </div>
             {/*TODO: cut the text after certain limit*/}
-            <button className={`btn btn-md btn-ghost text-primary text-xs font-bold`}>
+            <button className={`btn btn-xs btn-ghost text-primary text-xs font-bold`}>
                 Schedule
             </button>
         </div>
