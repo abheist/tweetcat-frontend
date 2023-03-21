@@ -1,13 +1,17 @@
 import React from "react";
 
-export function EventNewTweet() {
+interface EventNewTweetProps {
+    withTime?: boolean;
+}
+
+export function EventNewTweet({withTime=true}: EventNewTweetProps) {
     return <div
         className={`border border-2 border-base-300 rounded-xl px-4 py-2 flex gap-3`}>
         <div className={`text-xl`}>🐣</div>
-        <div className={`flex flex-col`}>
+        {withTime && <div className={`flex flex-col`}>
             <p className={`uppercase text-[10px]`}>Tweet</p>
             <p className={`uppercase text-[10px]`}>08:25PM</p>
-        </div>
+        </div>}
         {/*TODO: cut the text after certain limit*/}
         <div className={`text-xs`}>
             Crazy are the ones who think of changing the world!
