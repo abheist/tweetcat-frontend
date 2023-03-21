@@ -16,7 +16,7 @@ export default function Layout({children, className}: LayoutProps) {
     return (
         <>
             <Sidebar/>
-            <div className={`px-16 ${className}`}>
+            <div className={`pl-16 ${className}`}>
                 {children}
             </div>
         </>

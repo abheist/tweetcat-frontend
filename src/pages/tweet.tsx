@@ -1,9 +1,10 @@
 import React from 'react';
 import {WriteSidebar} from "@/components/writeSidebar";
 import sanitizeHtml from 'sanitize-html';
-import {SingleTweetTextarea} from "@/components/singleTweetTextarea";
 import Layout from "@/components/layout";
-import * as chrono from "chrono-node";
+import {ScheduleSidebar} from "@/components/scheduleSidebar";
+import {TweetHeader} from "@/components/tweetHeader";
+import {TweetInputArea} from "@/components/tweetInputArea";
 
 const Tweet = () => {
 
@@ -17,27 +18,23 @@ const Tweet = () => {
 
 
     return (
-        <Layout>
-            <div className={`flex`}>
-                <WriteSidebar/>
-                <div className={`flex-grow`}>
-                    <div className="navbar">
-                        <div className={`flex-grow flex justify-end gap-x-2`}>
-                            <button className="btn btn-ghost btn-xs text-primary">Dashboard</button>
-                            <button className="btn btn-outline btn-xs btn-primary">Schedule</button>
-                            <button className="btn btn-outline btn-xs btn-primary">Tweet Now</button>
+        <Layout className={``}>
+            <div className="drawer drawer-end">
+                <input id="my-drawer-4" type="checkbox" className="drawer-toggle"/>
+                <div className="drawer-content">
+                    <div className={`flex`}>
+                        <WriteSidebar/>
+                        <div className={`flex-grow`}>
+                            <TweetHeader/>
+                            <TweetInputArea onChange={onContentChange} html={content}/>
                         </div>
                     </div>
-                    <div className={`flex-grow flex justify-center items-center mt-16`}>
-                        <div>
-                            <SingleTweetTextarea onChange={onContentChange} html={content}/>
-                            <SingleTweetTextarea onChange={onContentChange} html={content}/>
-                            <SingleTweetTextarea onChange={onContentChange} html={content}/>
-                            <SingleTweetTextarea onChange={onContentChange} html={content}/>
-                            <SingleTweetTextarea onChange={onContentChange} html={content}/>
-                            <SingleTweetTextarea onChange={onContentChange} html={content}/>
-                        </div>
-                    </div>
+                </div>
+                <div className="drawer-side">
+                    <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
+                    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+                        <ScheduleSidebar/>
+                    </ul>
                 </div>
             </div>
         </Layout>
