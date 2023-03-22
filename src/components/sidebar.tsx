@@ -22,7 +22,7 @@ function SideBarAppIcon({icon, tooltip, link}: SideBarAppIconProps) {
 
 export default function Sidebar() {
     return (
-        <div className={`flex fixed w-16 border-r h-screen bg-blue-100 py-4`}>
+        <div className={`flex fixed w-16 border-r h-screen bg-blue-100 py-4 z-10`}>
             <div className={`flex-grow flex flex-col items-center`}>
                 <SideBarAppIcon icon={"N"} link={'/'}/>
 
