@@ -1,9 +1,15 @@
+import {FollowersChart} from "@/pages/analytics";
+
 export default function HomeStats() {
-    return <div className="stats shadow w-full">
-        <div className="stat">
-            <div className="stat-title">Tweets</div>
-            <div className="stat-value">75</div>
-            <div className="stat-desc text-success">↗︎ 44.2%</div>
+    return <div className="stats shadow w-full flex">
+        {/*TODO: Increase the cell size on hover, so the chart will have better visibility*/}
+        <div className="stat relative">
+            <div className={`z-10`}>
+                <div className="stat-title">Tweets</div>
+                <div className="stat-value">75</div>
+                <div className="stat-desc text-success">↗︎ 44.2%</div>
+            </div>
+            <div className={`absolute bottom-0 z-1 flex h-8 w-full`}><FollowersChart/></div>
         </div>
 
         <div className="stat">
