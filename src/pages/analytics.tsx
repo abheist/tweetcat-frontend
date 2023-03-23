@@ -70,9 +70,6 @@ const Analytics = () => {
                     <div className={`space-y-16`}>
                         {/*TODO: add a daily quote here, just daily quote, nothing else, keep it minimal*/}
                         <HomeStats/>
-                        <div className={`flex w-full h-80`}>
-                            <FollowersChart/>
-                        </div>
                     </div>
                 </div>
             </Layout>
