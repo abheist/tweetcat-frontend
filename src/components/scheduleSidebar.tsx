@@ -5,7 +5,7 @@ export function ScheduleSidebar() {
         <div className="space-y-4">
             <h2 className="card-title">Schedule</h2>
             <div>
-                <input type="text" placeholder="Type time here in natural language" autoFocus
+                <input type="text" placeholder="Type time here in natural language"
                        className="input input-bordered input-sm w-full max-w-xs"/>
             </div>
             <div>
