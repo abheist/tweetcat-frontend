@@ -56,7 +56,7 @@ export function SingleTweetTextarea({content, addTweet, index, removeTweet}: any
                         <div className="radial-progress" style={progressValues}/>
                     </button>
                     <button className="btn btn-square btn-outline border-slate-200 btn-xs font-light">
-                        #2
+                        #{index + 1}
                     </button>
                     <button className="btn btn-square btn-outline border-slate-200 btn-xs">
                         <FiImage/>
