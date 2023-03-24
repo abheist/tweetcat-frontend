@@ -8,9 +8,10 @@ interface SingleTweetTextareaProps {
     content: string,
     onChange: (evt: any) => void
     addTweet: (evt: any) => void
+    index: number
 }
 
-export function SingleTweetTextarea({content, onChange, addTweet}: any) {
+export function SingleTweetTextarea({content, onChange, addTweet, index}: any) {
     const [tweet, setTweet] = React.useState(() => content);
 
     const onContentChange = React.useCallback((evt: any) => {
@@ -60,7 +61,7 @@ export function SingleTweetTextarea({content, onChange, addTweet}: any) {
                     <button className="btn btn-square btn-outline border-slate-200 btn-xs">
                         <FiImage/>
                     </button>
-                    <button className="btn btn-square btn-outline border-slate-200 btn-xs" onClick={addTweet}>
+                    <button className="btn btn-square btn-outline border-slate-200 btn-xs" onClick={() => addTweet(index)}>
                         <FiPlus/>
                     </button>
                     <button className="btn btn-square btn-outline border-slate-200 btn-xs">
