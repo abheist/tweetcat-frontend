@@ -13,13 +13,20 @@ interface SingleTweetTextareaProps {
 
 export function SingleTweetTextarea({content, addTweet, index, removeTweet}: any) {
     const [tweet, setTweet] = React.useState(() => content);
+    const sanitizeConf = {};
+    const maxTweetLength = 280;
 
     const onContentChange = React.useCallback((evt: any) => {
-        const sanitizeConf = {};
-        setTweet(sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf))
+        const sanitized = sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf)
+        if (sanitized.length > maxTweetLength) {
+            /*
+            * TODO:
+            *  add a snackbar for showing the user that the tweet is too long,
+            *  better to let user continue typing and highlight the extra characters in red
+            */
+        }
+        setTweet(sanitized)
     }, [])
-
-    const progressValues = {"--size": "0.8rem", "--value": 70}
 
 
     return <div className={`flex gap-x-2 group/main`}>
@@ -53,7 +60,7 @@ export function SingleTweetTextarea({content, addTweet, index, removeTweet}: any
                 <div className="flex justify-between items-center gap-x-1 hidden group-hover/main:flex">
                     <button className={`btn btn-xs btn-outline border-slate-200`}>
                         {/*@ts-ignore*/}
-                        <div className="radial-progress" style={progressValues}/>
+                        <div className="radial-progress" style={{"--size": "0.8rem", "--value": 70}}/>
                     </button>
                     <button className="btn btn-square btn-outline border-slate-200 btn-xs font-light">
                         #{index + 1}
