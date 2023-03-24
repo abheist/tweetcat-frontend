@@ -11,7 +11,7 @@ interface SingleTweetTextareaProps {
     index: number
 }
 
-export function SingleTweetTextarea({content, addTweet, index, removeTweet}: any) {
+export function SingleTweetTextarea({content, addTweet, index, removeTweet}: SingleTweetTextareaProps) {
     const [tweet, setTweet] = React.useState(() => content);
     const sanitizeConf = {};
     const maxTweetLength = 280;
