@@ -6,12 +6,12 @@ import sanitizeHtml from "sanitize-html";
 
 interface SingleTweetTextareaProps {
     content: string,
-    onChange: (evt: any) => void
     addTweet: (evt: any) => void
+    removeTweet: (evt: any) => void
     index: number
 }
 
-export function SingleTweetTextarea({content, onChange, addTweet, index}: any) {
+export function SingleTweetTextarea({content, addTweet, index, removeTweet}: any) {
     const [tweet, setTweet] = React.useState(() => content);
 
     const onContentChange = React.useCallback((evt: any) => {
@@ -61,10 +61,12 @@ export function SingleTweetTextarea({content, onChange, addTweet, index}: any) {
                     <button className="btn btn-square btn-outline border-slate-200 btn-xs">
                         <FiImage/>
                     </button>
-                    <button className="btn btn-square btn-outline border-slate-200 btn-xs" onClick={() => addTweet(index)}>
+                    <button className="btn btn-square btn-outline border-slate-200 btn-xs"
+                            onClick={() => addTweet(index)}>
                         <FiPlus/>
                     </button>
-                    <button className="btn btn-square btn-outline border-slate-200 btn-xs">
+                    <button className="btn btn-square btn-outline border-slate-200 btn-xs"
+                            onClick={() => removeTweet(index)}>
                         <FiX/>
                     </button>
                 </div>

@@ -18,10 +18,23 @@ export function TweetInputArea() {
         setTweets(newState)
     }
 
+    const removeTweet = (index: number) => {
+        // TODO: add a snackbar for showing the user that this can't be deleted as this is the last tweet
+        if (tweets.length === 1) return
+        const newState = [...tweets]
+        newState.splice(index, 1)
+        setTweets(newState)
+    }
+
     return <div className={`flex-grow flex justify-center items-center mt-16 pb-56`}>
         <div className={`space-y-4`}>
-            {tweets.map((tweet, index) => <SingleTweetTextarea key={tweet.id} addTweet={addTweet}
-                                                               content={tweet.content} index={index}/>)}
+            {tweets.map((tweet, index) => {
+                return <SingleTweetTextarea key={tweet.id}
+                                            addTweet={addTweet}
+                                            removeTweet={removeTweet}
+                                            content={tweet.content}
+                                            index={index}/>
+            })}
         </div>
     </div>;
 }
