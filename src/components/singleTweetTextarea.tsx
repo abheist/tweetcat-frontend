@@ -60,7 +60,7 @@ export function SingleTweetTextarea({content, addTweet, index, removeTweet}: Sin
                 <div className="flex justify-between items-center gap-x-1 hidden group-hover/main:flex">
                     <button className={`btn btn-xs btn-outline border-slate-200`}>
                         {/*@ts-ignore*/}
-                        <div className="radial-progress" style={{"--size": "0.8rem", "--value": 70}}/>
+                        <div className="radial-progress" style={{"--size": "0.8rem", "--value": ((tweet.length/140) * 100)}}/>
                     </button>
                     <button className="btn btn-square btn-outline border-slate-200 btn-xs font-light">
                         #{index + 1}
