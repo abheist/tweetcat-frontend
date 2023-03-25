@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.0.8",
+    "@dnd-kit/modifiers": "^6.0.1",
+    "@dnd-kit/sortable": "^7.0.2",
+    "@dnd-kit/utilities": "^3.2.1",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "18.14.1",
     "@types/react": "18.0.28",
