@@ -86,7 +86,7 @@ export function SingleTweetTextarea({content, addTweet, index, removeTweet}: Sin
                 <div className="avatar">
                     <div className="w-8 rounded-full">
                         <img
-                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1528&q=80"/>
+                            src="https://pbs.twimg.com/profile_images/1588376678132506627/PjwuzsSg_400x400.jpg"/>
                     </div>
                 </div>
             </div>
