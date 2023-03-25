@@ -36,7 +36,6 @@ export function SingleTweetTextarea({content, addTweet, index, removeTweet}: Sin
         evt.stopPropagation();
 
         const files = evt?.dataTransfer?.files || evt?.target?.files
-        console.log(files)
         if (files.length > 0) {
             let newFiles = []
             for (let i = 0; i < files.length; i++) {
@@ -59,10 +58,12 @@ export function SingleTweetTextarea({content, addTweet, index, removeTweet}: Sin
                     }}
                     alt={file?.name}
                 />
-                {/*TODO: check if there is any file limit on twitter image upload, if there is, then show the below and add a limit check*/}
-                {/*<p className={`font-mono z-10 text-xs`}>*/}
-                {/*    {file.size / 1024 < 1000 ? (file.size / 1024).toFixed(1) + ` KB` : (file.size / (1024 * 1024)).toFixed(1) + ` MB`}*/}
-                {/*</p>*/}
+                {/*
+                    TODO: check if there is any file limit on twitter image upload, if there is, then show the below and add a limit check
+                    <p className={`font-mono z-10 text-xs`}>
+                        {file.size / 1024 < 1000 ? (file.size / 1024).toFixed(1) + ` KB` : (file.size / (1024 * 1024)).toFixed(1) + ` MB`}
+                    </p>
+                */}
             </div>
         ))}
     </div>;
