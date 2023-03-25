@@ -13,6 +13,8 @@ interface SingleTweetTextareaProps {
 
 export function SingleTweetTextarea({content, addTweet, index, removeTweet}: SingleTweetTextareaProps) {
     const [tweet, setTweet] = React.useState(() => content);
+    const [files, setFiles] = React.useState<File[]>(() => []);
+    const [isDragging, setIsDragging] = React.useState(() => false);
     const sanitizeConf = {};
     const maxTweetLength = 280;
 
@@ -28,6 +30,42 @@ export function SingleTweetTextarea({content, addTweet, index, removeTweet}: Sin
         setTweet(sanitized)
     }, [])
 
+    const handleDrop = (evt: any) => {
+        setIsDragging(false)
+        evt.preventDefault();
+        evt.stopPropagation();
+
+        const files = evt?.dataTransfer?.files || evt?.target?.files
+        console.log(files)
+        if (files.length > 0) {
+            let newFiles = []
+            for (let i = 0; i < files.length; i++) {
+                newFiles.push(Object.assign(files.item(i), {preview: URL.createObjectURL(files[i])}))
+            }
+            setFiles(newFiles);
+        }
+    }
+
+
+    const thumbs = <div className={`flex flex-row flex-wrap gap-4`}>
+        {files.map((file: any) => (
+            <div key={file?.name}>
+                <img
+                    src={file?.preview}
+                    className={`h-20 w-20 object-cover rounded-md border border-dashed border-blue-500`}
+                    // Revoke data uri after image is loaded
+                    onLoad={() => {
+                        URL.revokeObjectURL(file.preview)
+                    }}
+                    alt={file?.name}
+                />
+                {/*TODO: check if there is any file limit on twitter image upload, if there is, then show the below and add a limit check*/}
+                {/*<p className={`font-mono z-10 text-xs`}>*/}
+                {/*    {file.size / 1024 < 1000 ? (file.size / 1024).toFixed(1) + ` KB` : (file.size / (1024 * 1024)).toFixed(1) + ` MB`}*/}
+                {/*</p>*/}
+            </div>
+        ))}
+    </div>;
 
     return <div className={`flex gap-x-2 group/main`}>
         <div className={`flex`}>
@@ -43,16 +81,20 @@ export function SingleTweetTextarea({content, addTweet, index, removeTweet}: Sin
                 </div>
             </div>
         </div>
-        <div>
+        <div className={`space-y-4`}>
             <div className={`flex items-center gap-x-2`}>
                 <span className={`font-bold`}>Abhishek Singh</span>
                 <span className={`text-slate-400 text-sm`}>- @abheist</span>
             </div>
             <ContentEditable
-                className={`w-96 px-4 py-2`}
+                onDrop={(evt) => handleDrop(evt)}
+                onDragEnter={(evt) => setIsDragging(true)}
+                onDragLeave={(evt) => setIsDragging(false)}
+                className={`w-96 px-4 py-2 ` + (isDragging ? `bg-blue-100 border border-2 border-dashed border-blue-500` : ``)}
                 onChange={onContentChange}
                 onBlur={onContentChange}
                 html={tweet}/>
+            {files.length > 0 && thumbs}
             <div className={`flex gap-x-2 h-8 items-center`}>
                 <div className={`flex-grow flex flex-col justify-center`}>
                     <div className={`h-[0.05px] bg-slate-300`}></div>
@@ -67,9 +109,11 @@ export function SingleTweetTextarea({content, addTweet, index, removeTweet}: Sin
                     <button className="btn btn-square btn-outline border-slate-200 btn-xs font-light">
                         #{index + 1}
                     </button>
-                    <button className="btn btn-square btn-outline border-slate-200 btn-xs">
+                    <label className="btn btn-square btn-outline border-slate-200 btn-xs" htmlFor="file">
+                        <input name="file" id="file" type="file" className={`hidden`} max={4} multiple
+                               onChange={handleDrop}/>
                         <FiImage/>
-                    </button>
+                    </label>
                     <button className="btn btn-square btn-outline border-slate-200 btn-xs"
                             onClick={() => addTweet(index)}>
                         <FiPlus/>
