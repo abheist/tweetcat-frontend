@@ -1,6 +1,9 @@
 import {SingleTweetTextarea} from "@/components/singleTweetTextarea";
 import {useState} from "react";
 import sanitizeHtml from "sanitize-html";
+import {closestCenter, DndContext, KeyboardSensor, PointerSensor, useSensor, useSensors} from "@dnd-kit/core";
+import {arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy} from "@dnd-kit/sortable";
+import {restrictToVerticalAxis} from "@dnd-kit/modifiers";
 
 interface tweetsProps {
     content: string,
@@ -10,6 +13,12 @@ interface tweetsProps {
 export function TweetInputArea() {
     const [tweets, setTweets] = useState<tweetsProps[]>(() => [{content: "", id: Math.random()}]);
     const sanitizeConf = {};
+    const sensors = useSensors(
+        useSensor(PointerSensor),
+        useSensor(KeyboardSensor, {
+            coordinateGetter: sortableKeyboardCoordinates,
+        })
+    );
 
     const addTweet = (index: number) => {
         const newContent = sanitizeHtml("", sanitizeConf)
@@ -26,15 +35,41 @@ export function TweetInputArea() {
         setTweets(newState)
     }
 
-    return <div className={`flex-grow flex justify-center items-center mt-16 pb-56`}>
-        <div className={`space-y-4`}>
-            {tweets.map((tweet, index) => {
-                return <SingleTweetTextarea key={tweet.id}
-                                            addTweet={addTweet}
-                                            removeTweet={removeTweet}
-                                            content={tweet.content}
-                                            index={index}/>
-            })}
+    const handleDragEnd = (event: any) => {
+        const {active, over} = event;
+
+        if (active.id !== over.id) {
+            setTweets((tweets) => {
+                const oldIndex = tweets.findIndex((tweet) => tweet.id === active.id);
+                const newIndex = tweets.findIndex((tweet) => tweet.id === over.id);
+
+                return arrayMove(tweets, oldIndex, newIndex);
+            });
+        }
+    }
+
+    return <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
+        modifiers={[restrictToVerticalAxis]}
+    >
+        <div className={`flex-grow flex justify-center items-center mt-16 pb-56`}>
+            <div className={`space-y-4`}>
+                <SortableContext
+                    items={tweets.map((tweet) => tweet.id)}
+                    strategy={verticalListSortingStrategy}
+                >
+                    {tweets.map((tweet, index) => {
+                        return <SingleTweetTextarea key={tweet.id}
+                                                    id={tweet.id}
+                                                    addTweet={addTweet}
+                                                    removeTweet={removeTweet}
+                                                    content={tweet.content}
+                                                    index={index}/>
+                    })}
+                </SortableContext>
+            </div>
         </div>
-    </div>;
+    </DndContext>;
 }

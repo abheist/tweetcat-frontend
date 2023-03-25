@@ -3,20 +3,35 @@ import {FiImage, FiPlus, FiX} from "react-icons/fi";
 import {RxDragHandleDots2} from "react-icons/rx";
 import React from "react";
 import sanitizeHtml from "sanitize-html";
+import {useSortable} from "@dnd-kit/sortable";
+import {CSS} from "@dnd-kit/utilities";
 
 interface SingleTweetTextareaProps {
     content: string,
     addTweet: (evt: any) => void
     removeTweet: (evt: any) => void
     index: number
+    id: number
 }
 
-export function SingleTweetTextarea({content, addTweet, index, removeTweet}: SingleTweetTextareaProps) {
+export function SingleTweetTextarea({content, addTweet, index, removeTweet, id}: SingleTweetTextareaProps) {
     const [tweet, setTweet] = React.useState(() => content);
     const [files, setFiles] = React.useState<File[]>(() => []);
     const [isDragging, setIsDragging] = React.useState(() => false);
+    const {
+        attributes,
+        listeners,
+        setNodeRef,
+        transform,
+        transition,
+    } = useSortable({id: id});
     const sanitizeConf = {};
     const maxTweetLength = 280;
+
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+    };
 
     const onContentChange = React.useCallback((evt: any) => {
         const sanitized = sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf)
@@ -77,61 +92,64 @@ export function SingleTweetTextarea({content, addTweet, index, removeTweet}: Sin
         ))}
     </div>;
 
-    return <div className={`flex gap-x-2 group/main`}>
-        <div className={`flex`}>
-            <button className={`btn btn-square btn-sm btn-ghost cursor-grab active:cursor-grabbing`}>
-                <RxDragHandleDots2/>
-            </button>
-            <div>
-                <div className="avatar">
-                    <div className="w-8 rounded-full">
-                        <img
-                            src="https://pbs.twimg.com/profile_images/1588376678132506627/PjwuzsSg_400x400.jpg"/>
+    return <div ref={setNodeRef} style={style}>
+        <div className={`flex gap-x-2 group/main`}>
+            <div className={`flex`}>
+                <button
+                    className={`btn btn-square btn-sm btn-ghost cursor-grab active:cursor-grabbing`} {...attributes} {...listeners}>
+                    <RxDragHandleDots2/>
+                </button>
+                <div>
+                    <div className="avatar">
+                        <div className="w-8 rounded-full">
+                            <img
+                                src="https://pbs.twimg.com/profile_images/1588376678132506627/PjwuzsSg_400x400.jpg"/>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div className={`space-y-4`}>
-            <div className={`flex items-center gap-x-2`}>
-                <span className={`font-bold`}>Abhishek Singh</span>
-                <span className={`text-slate-400 text-sm`}>- @abheist</span>
-            </div>
-            <ContentEditable
-                onDrop={(evt) => handleDrop(evt)}
-                onDragEnter={(evt) => setIsDragging(true)}
-                onDragLeave={(evt) => setIsDragging(false)}
-                className={`w-96 px-4 py-2 ` + (isDragging ? `bg-blue-100 border border-2 border-dashed border-blue-500` : ``)}
-                onChange={onContentChange}
-                onBlur={onContentChange}
-                html={tweet}/>
-            {files.length > 0 && thumbs}
-            <div className={`flex gap-x-2 h-8 items-center`}>
-                <div className={`flex-grow flex flex-col justify-center`}>
-                    <div className={`h-[0.05px] bg-slate-300`}></div>
+            <div className={`space-y-4`}>
+                <div className={`flex items-center gap-x-2`}>
+                    <span className={`font-bold`}>Abhishek Singh</span>
+                    <span className={`text-slate-400 text-sm`}>- @abheist</span>
                 </div>
-                <div className="flex justify-between items-center gap-x-1 hidden group-hover/main:flex">
-                    <button className={`btn btn-xs btn-outline border-slate-200 space-x-1`}>
-                        {tweet.length > 0 && <div className={`text-[10px]`}>{tweet.length}</div>}
-                        {/*@ts-ignore*/}
-                        <div style={{"--size": "0.8rem", "--value": ((tweet.length / 140) * 100)}}
-                             className="radial-progress"/>
-                    </button>
-                    <button className="btn btn-square btn-outline border-slate-200 btn-xs font-light">
-                        #{index + 1}
-                    </button>
-                    <label className="btn btn-square btn-outline border-slate-200 btn-xs" htmlFor="file">
-                        <input name="file" id="file" type="file" className={`hidden`} max={4} multiple
-                               onChange={handleDrop}/>
-                        <FiImage/>
-                    </label>
-                    <button className="btn btn-square btn-outline border-slate-200 btn-xs"
-                            onClick={() => addTweet(index)}>
-                        <FiPlus/>
-                    </button>
-                    <button className="btn btn-square btn-outline border-slate-200 btn-xs"
-                            onClick={() => removeTweet(index)}>
-                        <FiX/>
-                    </button>
+                <ContentEditable
+                    onDrop={(evt) => handleDrop(evt)}
+                    onDragEnter={(evt) => setIsDragging(true)}
+                    onDragLeave={(evt) => setIsDragging(false)}
+                    className={`w-96 px-4 py-2 ` + (isDragging ? `bg-blue-100 border border-2 border-dashed border-blue-500` : ``)}
+                    onChange={onContentChange}
+                    onBlur={onContentChange}
+                    html={tweet}/>
+                {files.length > 0 && thumbs}
+                <div className={`flex gap-x-2 h-8 items-center`}>
+                    <div className={`flex-grow flex flex-col justify-center`}>
+                        <div className={`h-[0.05px] bg-slate-300`}></div>
+                    </div>
+                    <div className="flex justify-between items-center gap-x-1 hidden group-hover/main:flex">
+                        <button className={`btn btn-xs btn-outline border-slate-200 space-x-1`}>
+                            {tweet.length > 0 && <div className={`text-[10px]`}>{tweet.length}</div>}
+                            {/*@ts-ignore*/}
+                            <div style={{"--size": "0.8rem", "--value": ((tweet.length / 140) * 100)}}
+                                 className="radial-progress"/>
+                        </button>
+                        <button className="btn btn-square btn-outline border-slate-200 btn-xs font-light">
+                            #{index + 1}
+                        </button>
+                        <label className="btn btn-square btn-outline border-slate-200 btn-xs" htmlFor="file">
+                            <input name="file" id="file" type="file" className={`hidden`} max={4} multiple
+                                   onChange={handleDrop}/>
+                            <FiImage/>
+                        </label>
+                        <button className="btn btn-square btn-outline border-slate-200 btn-xs"
+                                onClick={() => addTweet(index)}>
+                            <FiPlus/>
+                        </button>
+                        <button className="btn btn-square btn-outline border-slate-200 btn-xs"
+                                onClick={() => removeTweet(index)}>
+                            <FiX/>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
