@@ -46,9 +46,13 @@ export function SingleTweetTextarea({content, addTweet, index, removeTweet}: Sin
     }
 
 
+    function handleImageDelete(index: number) {
+        setFiles(files.filter((file, i) => i !== index))
+    }
+
     const thumbs = <div className={`flex flex-row flex-wrap gap-4`}>
-        {files.map((file: any) => (
-            <div key={file?.name}>
+        {files.map((file: any, index: number) => (
+            <div key={file?.name} className={`relative group`}>
                 <img
                     src={file?.preview}
                     className={`h-20 w-20 object-cover rounded-md border border-dashed border-blue-500`}
@@ -58,6 +62,11 @@ export function SingleTweetTextarea({content, addTweet, index, removeTweet}: Sin
                     }}
                     alt={file?.name}
                 />
+                <button
+                    className={`btn btn-square btn-error btn-xs absolute top-1 right-1 z-10 hidden group-hover:flex`}
+                    onClick={() => handleImageDelete(index)}>
+                    <FiX/>
+                </button>
                 {/*
                     TODO: check if there is any file limit on twitter image upload, if there is, then show the below and add a limit check
                     <p className={`font-mono z-10 text-xs`}>
