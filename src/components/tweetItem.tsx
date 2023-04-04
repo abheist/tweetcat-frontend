@@ -19,7 +19,7 @@ export function TweetItem({active, text, onClick}: TweetItemProps) {
             </button>
         </div>
         <div>
-            <p>{text.substring(0, MAX_LENGTH)}{text.length > MAX_LENGTH && '...'}</p>
+            <p className={`line-clamp-3`}>{text}</p>
         </div>
     </li>;
 }

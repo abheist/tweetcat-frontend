@@ -12,12 +12,16 @@ export function WriteSidebar() {
     const [selectedTweet, setSelectedTweet] = useState(() => 0);
 
     const drafts = [
-        {text: `What is happening here, you are not the controller of it.`},
-        {text: `What is happening here, you are not the controller of it, you can just do what you want and it will happen. Woha woha woha`},
-        {text: `What is happening here, you are not the controller of it, you can just do what you want and it will happen.`},
-        {text: `What is happening here, you are not the controller of it, you can just do what you want and it will happen.`},
-        {text: `What is happening here, you are not the controller of it, you can just do what you want and it will happen.`},
-        {text: `What is happening here, you are not the controller of it, you can just do what you want and it will happen.`},
+        {text: "Your vision will become clear only when you can look into your own heart. Who looks outside, dreams; who looks inside, awakes."},
+        {text: "Knowing your own darkness is the best method for dealing with the darknesses of other people."},
+        {text: "The greatest and most important problems of life are all fundamentally insoluble. They can never be solved but only outgrown."},
+        {text: "The privilege of a lifetime is to become who you truly are."},
+        {text: "I am not what happened to me, I am what I choose to become."},
+        {text: "Everything that irritates us about others can lead us to an understanding of ourselves."},
+        {text: "The meeting of two personalities is like the contact of two chemical substances: if there is any reaction, both are transformed."},
+        {text: "Your vision will only become clear when you can look into your own heart. Who looks outside, dreams; who looks inside, awakes."},
+        {text: "The greatest discovery of my generation is that a human being can alter his life by altering his attitudes."},
+        {text: "What you resist, persists."},
     ]
 
     const scheduled = [

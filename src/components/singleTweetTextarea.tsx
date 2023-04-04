@@ -103,7 +103,7 @@ export function SingleTweetTextarea({content, addTweet, index, removeTweet, id}:
                     <div className="avatar">
                         <div className="w-8 rounded-full">
                             <img
-                                src="https://pbs.twimg.com/profile_images/1588376678132506627/PjwuzsSg_400x400.jpg"/>
+                                src="https://pbs.twimg.com/profile_images/1640726751469793283/lCbZ1c2y_400x400.jpg"/>
                         </div>
                     </div>
                 </div>

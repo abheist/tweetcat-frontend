@@ -39,7 +39,7 @@ export default function Sidebar() {
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full ring">
                             <img
-                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1528&q=80"/>
+                                src="https://pbs.twimg.com/profile_images/1640726751469793283/lCbZ1c2y_400x400.jpg"/>
                         </div>
                     </label>
                     <ul tabIndex={0}
