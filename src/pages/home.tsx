@@ -1,15 +1,32 @@
 import React from 'react';
 import HomeStats from "@/components/homeStats";
-import Layout from "@/components/layout";
+import Layout, {getUser} from "@/components/layout";
 import {AutoRetweet} from "@/components/autoRetweet";
 import {UpcomingEvents} from "@/components/upcomingEvents";
+import {TweetArea} from "@/components/tweetArea";
+import CustomerPortalButton from "@/components/customerPortalButton";
+import Link from "next/link";
+import {useQuery} from "react-query";
 
 const Home = () => {
+    const {data: response} = useQuery(['user'], getUser)
+
     return (
         <Layout className={`py-16`}>
             <div className={`container mx-auto px-48 flex justify-center`}>
                 <div className={`space-y-16`}>
                     {/*TODO: add a daily quote here, just daily quote, nothing else, keep it minimal*/}
+                    <div className={`space-y-4`}>
+                        <h2>👋 Hey {response?.data?.firstName}</h2>
+                        <div className={`space-y-4`}>
+                            <TweetArea/>
+                            <div className={`space-x-4`}>
+                                <CustomerPortalButton/>
+                                <Link className={`btn`} href={`/subscribe`}>Subscribe</Link>
+                            </div>
+
+                        </div>
+                    </div>
                     <HomeStats/>
                     <div className={`flex justify-between space-x-16`}>
                         <div className={`w-1/2`}>

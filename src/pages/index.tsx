@@ -1,10 +1,9 @@
 import Head from 'next/head'
-import {useQuery} from "react-query";
-import {getUser} from "@/components/layout";
-import CustomerPortalButton from "@/components/customerPortalButton";
-import {TweetArea} from "@/components/tweetArea";
-import Link from "next/link";
 import {axiosPrivate} from "@/utils/axiosPrivate";
+import {useQuery} from "react-query";
+import {axiosPublic} from "@/utils/axiosPublic";
+import {useEffect} from "react";
+import localforage from "localforage";
 
 // const inter = Inter({subsets: ['latin']})
 
@@ -12,8 +11,39 @@ export const makeTweet = (data: any) => {
     return axiosPrivate.post('twitter/post/', {tweet: data})
 }
 
+const getTwitterLink = () => {
+    return axiosPublic.get("twitter/get-twitter-login/")
+}
+
+export const getUser = async () => {
+    const accessToken = await localforage.getItem('user').then((data: any) => data?.accessToken)
+    if (accessToken) {
+        return axiosPublic.get('auth/user/',
+            {
+                headers: {
+                    authorization: `Bearer ${accessToken}`
+                }
+            })
+    }
+}
+
+
 export default function Home() {
     const {data: response} = useQuery(['user'], getUser)
+    // TODO: get the twitter login link only if user is not logged in
+    const {data: twitterLink} = useQuery(["getTwitterLink"], getTwitterLink)
+
+    // TODO: check if user is logged-in, if user is logged in, redirect the user to home page
+    const handleLoginWithTwitter = () => {
+        window.location = twitterLink?.data
+    }
+
+    useEffect(() => {
+        if (response?.data?.username) {
+            window.location = '/home'
+        }
+    }, [response])
+
 
     return (
         <>
@@ -24,16 +54,11 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <main className={''}>
-                <div className={`space-y-4`}>
-                    <h2>👋 Hey {response?.data?.firstName}</h2>
-                    <div className={`space-y-4`}>
-                        <TweetArea/>
-                        <div className={`space-x-4`}>
-                            <CustomerPortalButton/>
-                            <Link className={`btn`} href={`/subscribe`}>Subscribe</Link>
-                        </div>
-
-                    </div>
+                <div>
+                    <button className={`bg-blue-500 px-8 py-4 rounded-full text-white`}
+                            onClick={() => handleLoginWithTwitter()}>
+                        Login with Twitter
+                    </button>
                 </div>
             </main>
         </>
