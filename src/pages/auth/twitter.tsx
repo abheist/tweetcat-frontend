@@ -40,7 +40,7 @@ export default function TwitterSuccess() {
         if (data) {
             setData(data)
             console.log(data)
-            localforage.setItem('user', data).then(res => router.push('/'))
+            localforage.setItem('user', data).then(res => router.push('/home'))
         }
     }
 
