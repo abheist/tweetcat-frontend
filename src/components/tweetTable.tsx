@@ -57,7 +57,7 @@ export function TweetTable({tweets = []}: TweetTableProps) {
 
     if (tweets?.length === 0) return (
         <div>
-            <div className="overflow-x-auto relative bg-red-100 rounded">
+            <div className="overflow-x-auto relative rounded">
                 <div
                     className={`absolute bg-gray-100/95 z-20 w-full h-full flex justify-center items-center`}>
                     <div className={`space-y-4`}>
