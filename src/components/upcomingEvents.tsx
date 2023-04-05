@@ -1,8 +1,14 @@
 import {EventCleaningTweet, EventNewTweet, EventRetweet} from "@/components/tweetEvents";
 import React from "react";
+import {UpcomingFeature} from "@/components/upcomingFeature";
 
 export function UpcomingEvents() {
     return <div className="card bg-base-100 shadow overflow-hidden max-h-[490px]">
+        <UpcomingFeature
+            icon={`🐣`}
+            heading={'Upcoming Feature'}
+            description={`You will able to see your upcoming events here, which include your scheduled tweets, retweets,
+                          and cleaning.`}/>
         <div className="card-body">
             <h2 className="card-title">Upcoming Events</h2>
             <p>Today</p>
