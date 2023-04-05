@@ -40,6 +40,7 @@ export default function Home() {
 
     useEffect(() => {
         if (response?.data?.username) {
+            // @ts-ignore
             window.location = '/home'
         }
     }, [response])

@@ -1,4 +1,4 @@
-import {FiFeather} from "react-icons/fi";
+import {FiFeather, FiHome} from "react-icons/fi";
 import {ReactNode} from "react";
 import Link from "next/link";
 
@@ -28,7 +28,7 @@ export default function Sidebar() {
 
                 <div className={`flex-grow`}></div>
 
-                {/*<SideBarAppIcon icon={<FiHome/>} tooltip={`Home`} link={`/home`}/>*/}
+                <SideBarAppIcon icon={<FiHome/>} tooltip={`Home`} link={`/home`}/>
                 {/*<SideBarAppIcon icon={<FiFeather/>} tooltip={`Tweet`} link={`tweet`}/>*/}
                 <SideBarAppIcon icon={<FiFeather/>} tooltip={`Tweets`} link={`tweets`}/>
                 {/*<SideBarAppIcon icon={<FiCalendar/>} tooltip={`Calendar`} link={`calender`}/>*/}
