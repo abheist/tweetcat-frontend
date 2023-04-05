@@ -1,6 +1,10 @@
 import React from "react";
 
-export function TweetTable() {
+interface TweetTableProps {
+    tweets: any[]
+}
+
+export function TweetTable({tweets = []}: TweetTableProps) {
 
 
     const mockTweets = [
@@ -51,9 +55,7 @@ export function TweetTable() {
         }
     ]
 
-    const tweets: any[] = []
-
-    if (tweets.length === 0) return (
+    if (tweets?.length === 0) return (
         <div>
             <div className="overflow-x-auto relative bg-red-100 rounded">
                 <div
