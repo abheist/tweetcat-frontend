@@ -5,6 +5,6 @@ import localforage from "localforage";
 export async function logout() {
     await localforage.clear()
     // @ts-ignore
-    window.location = '/login'
+    window.location = '/'
 }
 
