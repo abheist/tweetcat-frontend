@@ -1,4 +1,4 @@
-import {FiFeather, FiHome} from "react-icons/fi";
+import {FiFeather} from "react-icons/fi";
 import {ReactNode} from "react";
 import Link from "next/link";
 
@@ -28,8 +28,9 @@ export default function Sidebar() {
 
                 <div className={`flex-grow`}></div>
 
-                <SideBarAppIcon icon={<FiHome/>} tooltip={`Home`} link={`/home`}/>
-                <SideBarAppIcon icon={<FiFeather/>} tooltip={`Tweet`} link={`tweet`}/>
+                {/*<SideBarAppIcon icon={<FiHome/>} tooltip={`Home`} link={`/home`}/>*/}
+                {/*<SideBarAppIcon icon={<FiFeather/>} tooltip={`Tweet`} link={`tweet`}/>*/}
+                <SideBarAppIcon icon={<FiFeather/>} tooltip={`Tweets`} link={`tweets`}/>
                 {/*<SideBarAppIcon icon={<FiCalendar/>} tooltip={`Calendar`} link={`calender`}/>*/}
                 {/*<SideBarAppIcon icon={<FiTrendingUp/>} tooltip={`Analytics`} link={`analytics`}/>*/}
 
@@ -39,7 +40,8 @@ export default function Sidebar() {
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full ring">
                             <img
-                                src="https://pbs.twimg.com/profile_images/1640726751469793283/lCbZ1c2y_400x400.jpg"/>
+                                src="https://pbs.twimg.com/profile_images/1640726751469793283/lCbZ1c2y_400x400.jpg"
+                                alt={`profile pic`}/>
                         </div>
                     </label>
                     <ul tabIndex={0}
