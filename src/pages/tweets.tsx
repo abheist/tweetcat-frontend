@@ -36,7 +36,7 @@ const Tweets = () => (
                 <p className={`text-gray-500`}>
                     System will pick the first tweet which is not published yet and publish it. The tweets will be
                     published in sequence from the csv file uploaded and will be repeated after all the tweets are
-                    published. You can also upload the same file again to add more tweets to the queue.
+                    published. You can also upload the file again to add more tweets to the queue.
                 </p>
                 <p className={`text-gray-500`}>
                     We will be adding the functionality to add tweets manually in the future. Additionally, you can also
