@@ -79,8 +79,8 @@ export const ProductDisplay = () => {
                                     <div className={`flex justify-between items-center`}>
                                         <div>
                                             <p className="mt-6 flex items-baseline justify-center gap-x-2">
-                                            <span className="text-xl font-bold tracking-tight text-gray-900">
-                                                $349
+                                            <span className="text-3xl font-bold tracking-tight text-gray-700">
+                                                $12
                                             </span>
                                                 <span
                                                     className="text-sm font-semibold leading-6 tracking-wide text-gray-600">
@@ -91,8 +91,8 @@ export const ProductDisplay = () => {
                                         </div>
                                         <div>
                                             <p className="mt-6 flex items-baseline justify-center gap-x-2">
-                                            <span className="text-4xl font-bold tracking-tight text-gray-900">
-                                                $349
+                                            <span className="text-5xl font-bold tracking-tight text-gray-900">
+                                                $9
                                             </span>
                                                 <span
                                                     className="text-sm font-semibold leading-6 tracking-wide text-gray-600">
