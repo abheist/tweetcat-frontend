@@ -12,8 +12,8 @@ const Home = () => {
 
     return (
         <Layout className={`py-16`}>
-            <div className={`container mx-auto px-48 flex justify-center`}>
-                <div className={`space-y-16`}>
+            <div className={`container mx-auto flex justify-center px-48`}>
+                <div className={`space-y-16 w-full`}>
                     {/*TODO: add a daily quote here, just daily quote, nothing else, keep it minimal*/}
                     <div className={`flex justify-between items-center`}>
                         <h2 className={`text-2xl`}>👋 Hey {response?.data?.firstName}</h2>
