@@ -26,6 +26,13 @@ axios.interceptors.response.use(
     async (error) => {
         const config = error?.config
 
+        if (error?.response?.status === 400 && !config?.sent) {
+            console.log(error?.response?.data?.error_code)
+            if (error?.response?.data?.error_code === 'EMAIL_REQUIRED_REDIRECT') {
+                window.location = error?.response?.data?.redirect_url
+            }
+        }
+
         if (error?.response?.status === 401 && !config?.sent) {
             config.sent = true
             const result: any = await refreshToken()
