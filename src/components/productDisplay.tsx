@@ -32,7 +32,7 @@ export const ProductDisplay = () => {
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="mx-auto max-w-2xl sm:text-center">
                         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                            Grow your business like a PRO
+                            Grow your audience like a PRO
                         </h2>
                         <p className="mt-6 text-lg leading-8 text-gray-600">
                             With the right tools, you can grow your business and reach new customers. Here, we are
