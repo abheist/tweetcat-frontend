@@ -130,21 +130,22 @@ export function TweetTable({tweets = []}: TweetTableProps) {
     )
 
     return <div className="overflow-x-auto">
-        <table className="table table-auto table-compact w-full relative">
+        <table className="table table-fixed table-compact w-full relative">
             <thead>
             <tr>
-                <th></th>
-                <th>Tweet</th>
-                <th>Last published</th>
+                <th className={`w-0.5`}></th>
+                <th className={`w-10/12`}>Tweet</th>
+                <th className={`w-2/12`}>Last published</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody className={`bg-red-300`}>
             {
                 tweets.map((tweet) => (
                     <tr key={tweet.id}>
-                        <td>{tweet.id}</td>
-                        <td>{tweet.tweet}</td>
-                        <td>{tweet.lastPublished}</td>
+                        <td></td>
+                        <td className={`truncate text-ellipsis`}>{tweet.tweetText}</td>
+                        <td>{tweet.lastPublishedTime ||
+                            <div className="badge badge-secondary badge-outline">Not published yet</div>}</td>
                     </tr>
                 ))
             }
