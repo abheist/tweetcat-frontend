@@ -27,8 +27,7 @@ axios.interceptors.response.use(
         const config = error?.config
 
         if (error?.response?.status === 400 && !config?.sent) {
-            console.log(error?.response?.data?.error_code)
-            if (error?.response?.data?.error_code === 'EMAIL_REQUIRED_REDIRECT') {
+            if (error?.response?.data?.error_code === 'REDIRECT_NEEDED') {
                 window.location = error?.response?.data?.redirect_url
             }
         }
