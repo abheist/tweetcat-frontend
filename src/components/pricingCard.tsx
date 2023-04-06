@@ -9,7 +9,7 @@ export function PricingCard(props: { onClick: () => Promise<void>, onClick1: () 
                 </p>
                 <div className={`flex justify-between items-center mt-4`}>
                     <div className={`border py-10 px-8 flex-1 -mr-4 rounded-2xl`}>
-                        <p className="mt-6 flex items-baseline justify-center gap-x-2">
+                        <div className="mt-6 flex items-baseline justify-center gap-x-2">
                             <div className="text-3xl font-bold tracking-tight text-gray-700">
                                 $12
                             </div>
@@ -17,8 +17,8 @@ export function PricingCard(props: { onClick: () => Promise<void>, onClick1: () 
                                 className="text-sm font-semibold leading-6 tracking-wide text-gray-600">
                                 USD
                             </div>
-                        </p>
-                        <p className={`text-xs`}>monthly</p>
+                        </div>
+                        <div className={`text-xs`}>monthly</div>
                         <div className={`mt-10`}>
                             <button
                                 className="btn btn-md btn-block"
@@ -34,12 +34,12 @@ export function PricingCard(props: { onClick: () => Promise<void>, onClick1: () 
                             className="text-xl font-mono line-through font-bold text-gray-400">
                             $144 USD
                         </div>
-                        <p className="mt-2 flex items-baseline justify-center gap-x-2">
+                        <div className="mt-2 flex items-baseline justify-center gap-x-2">
                             <div className="text-5xl font-bold tracking-tight text-gray-900">
                                 $108
                             </div>
-                        </p>
-                        <p className={`text-xs mt-2`}>USD per year</p>
+                        </div>
+                        <div className={`text-xs mt-2`}>USD per year</div>
                         <div className={`mt-10`}>
                             <button
                                 className="btn btn-md flex-1 btn-primary btn-block"
@@ -51,9 +51,9 @@ export function PricingCard(props: { onClick: () => Promise<void>, onClick1: () 
                         </div>
                     </div>
                 </div>
-                <p className="mt-6 text-xs leading-5 text-gray-600">
+                <div className="mt-6 text-xs leading-5 text-gray-600">
                     Invoices and receipts available for easy company reimbursement
-                </p>
+                </div>
             </div>
         </div>
     </div>;
