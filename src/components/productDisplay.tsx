@@ -74,7 +74,7 @@ export const ProductDisplay = () => {
                                 className="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
                                 <div className="mx-auto max-w-xs px-8">
                                     <p className="text-base font-semibold text-gray-600">
-                                        Pay once, own it forever
+                                        Get started today
                                     </p>
                                     <div className={`flex justify-between items-center`}>
                                         <div>
