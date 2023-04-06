@@ -41,7 +41,7 @@ export function TweetTable() {
                            hasMore={hasNextPage}
                            loader={<div className="loader" key={0}>Loading ...</div>}>
         <table className="table table-fixed table-compact w-full relative">
-            <thead>
+            <thead className={`sticky top-0 z-20`}>
             <tr>
                 <th className={`w-0.5`}></th>
                 <th className={`w-10/12`}>Tweet</th>
