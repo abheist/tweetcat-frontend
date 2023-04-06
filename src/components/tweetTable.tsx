@@ -1,21 +1,45 @@
-import React from "react";
-import {useQuery} from "react-query";
+import React, {useEffect} from "react";
+import {useInfiniteQuery} from "react-query";
 import {axiosPrivate} from "@/utils/axiosPrivate";
+import InfiniteScroll from "react-infinite-scroller";
 import {NoTweetPlaceholder} from "@/components/noTweetPlaceholder";
 
-export const getTweets = () => {
-    return axiosPrivate.get('tweets/')
+
+const getTweets = ({pageParam = 1}) => {
+    console.log({pageParam})
+    return axiosPrivate.get('tweets/?page=' + pageParam)
 }
 
 export function TweetTable() {
-    const {data: response} = useQuery(['tweets'], getTweets)
+    const [page, setPage] = React.useState(1)
+    const {
+        data: response,
+        error, fetchNextPage, hasNextPage, isFetched, isFetchingNextPage, status
+    } = useInfiniteQuery({
+        queryKey: ['tweets'],
+        queryFn: getTweets,
+        getNextPageParam: (lastPage, pages) => {
+            if (lastPage?.data?.next) {
+                return page + 1
+            }
+        }
+    })
+
+    useEffect(() => {
+        console.log(response)
+    }, [response])
+
+    response?.pages.map((group, i) => {
+        if (group?.data?.results?.length === 0) {
+            return <NoTweetPlaceholder key={i}/>
+        }
+    })
 
 
-    if (response?.data?.results?.length === 0) return (
-        <NoTweetPlaceholder/>
-    )
-
-    return <div className="overflow-x-auto">
+    return <InfiniteScroll pageStart={0}
+                           loadMore={() => fetchNextPage()}
+                           hasMore={hasNextPage}
+                           loader={<div className="loader" key={0}>Loading ...</div>}>
         <table className="table table-fixed table-compact w-full relative">
             <thead>
             <tr>
@@ -25,8 +49,8 @@ export function TweetTable() {
             </tr>
             </thead>
             <tbody className={`bg-red-300`}>
-            {
-                response?.data?.results.map((tweet: any) => (
+
+            {response?.pages.map((group, i) => group?.data?.results.map((tweet: any) => (
                     <tr key={tweet.id}>
                         <td></td>
                         <td className={`truncate text-ellipsis`}>{tweet.tweetText}</td>
@@ -34,7 +58,7 @@ export function TweetTable() {
                             <div className="badge badge-secondary badge-outline">Not published yet</div>}</td>
                     </tr>
                 ))
-            }
+            )}
             </tbody>
             <tfoot>
             <tr>
@@ -44,5 +68,5 @@ export function TweetTable() {
             </tr>
             </tfoot>
         </table>
-    </div>;
+    </InfiniteScroll>
 }
