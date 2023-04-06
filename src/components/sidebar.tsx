@@ -2,6 +2,7 @@ import {FiFeather, FiHome} from "react-icons/fi";
 import React, {ReactNode} from "react";
 import Link from "next/link";
 import CustomerPortalButton from "@/components/customerPortalButton";
+import {logout} from "@/utils/fetchMiddleware";
 
 interface SideBarAppIconProps {
     icon: ReactNode
@@ -48,7 +49,9 @@ export default function Sidebar() {
                     <ul tabIndex={0}
                         className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><CustomerPortalButton/></li>
-                        <li><a>Logout</a></li>
+                        <li>
+                            <button onClick={() => logout()}>Logout</button>
+                        </li>
                     </ul>
                 </div>
             </div>
