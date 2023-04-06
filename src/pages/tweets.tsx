@@ -1,25 +1,17 @@
 import Layout from "@/components/layout";
 import React from "react";
 import {TweetTable} from "@/components/tweetTable";
-import {axiosPrivate} from "@/utils/axiosPrivate";
-import {useQuery} from "react-query";
 import {UploadTweetFile} from "@/components/uploadTweetFile";
 
 
-export const getTweets = () => {
-    return axiosPrivate.get('tweets/')
-}
-
 const Tweets = () => {
-
-    const {data: response} = useQuery(['tweets'], getTweets)
 
     return (
         <Layout className={`py-16`}>
             <div className={`container mx-auto px-48`}>
                 <UploadTweetFile/>
                 <div className={`mt-8`}>
-                    <TweetTable tweets={response?.data?.results}/>
+                    <TweetTable/>
                 </div>
                 <div className={`text-xs mt-2 space-y-2`}>
                     <p className={`text-gray-500`}>

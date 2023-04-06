@@ -1,7 +1,13 @@
 import React from "react";
+import {useQuery} from "react-query";
+import {axiosPrivate} from "@/utils/axiosPrivate";
 
 interface TweetTableProps {
     tweets: any[]
+}
+
+export const getTweets = () => {
+    return axiosPrivate.get('tweets/')
 }
 
 function NoTweetPlaceholder({tweets}: TweetTableProps) {
@@ -74,8 +80,8 @@ function NoTweetPlaceholder({tweets}: TweetTableProps) {
         </div>);
 }
 
-export function TweetTable({tweets = []}: TweetTableProps) {
-
+export function TweetTable() {
+    const {data: response} = useQuery(['tweets'], getTweets)
 
     const mockTweets = [
         {
@@ -125,7 +131,7 @@ export function TweetTable({tweets = []}: TweetTableProps) {
         }
     ]
 
-    if (tweets?.length === 0) return (
+    if (response?.data?.results?.length === 0) return (
         <NoTweetPlaceholder tweets={mockTweets}/>
     )
 
@@ -140,7 +146,7 @@ export function TweetTable({tweets = []}: TweetTableProps) {
             </thead>
             <tbody className={`bg-red-300`}>
             {
-                tweets.map((tweet) => (
+                response?.data?.results.map((tweet: any) => (
                     <tr key={tweet.id}>
                         <td></td>
                         <td className={`truncate text-ellipsis`}>{tweet.tweetText}</td>
