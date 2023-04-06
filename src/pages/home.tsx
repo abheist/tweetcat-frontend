@@ -3,7 +3,6 @@ import HomeStats from "@/components/homeStats";
 import Layout, {getUser} from "@/components/layout";
 import {AutoRetweet} from "@/components/autoRetweet";
 import {UpcomingEvents} from "@/components/upcomingEvents";
-import CustomerPortalButton from "@/components/customerPortalButton";
 import Link from "next/link";
 import {useQuery} from "react-query";
 
@@ -18,7 +17,6 @@ const Home = () => {
                     <div className={`flex justify-between items-center`}>
                         <h2 className={`text-2xl`}>👋 Hey {response?.data?.firstName}</h2>
                         <div className={`space-x-4`}>
-                            <CustomerPortalButton/>
                             <Link className={`btn`} href={`/subscribe`}>Subscribe</Link>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 import {FiFeather, FiHome} from "react-icons/fi";
-import {ReactNode} from "react";
+import React, {ReactNode} from "react";
 import Link from "next/link";
+import CustomerPortalButton from "@/components/customerPortalButton";
 
 interface SideBarAppIconProps {
     icon: ReactNode
@@ -36,7 +37,7 @@ export default function Sidebar() {
 
                 <div className={`flex-grow`}></div>
 
-                <div className="dropdown dropdown-end tooltip tooltip-right" data-tip="Settings">
+                <div className="dropdown dropdown-right dropdown-end tooltip tooltip-right" data-tip="Settings">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full ring">
                             <img
@@ -46,13 +47,7 @@ export default function Sidebar() {
                     </label>
                     <ul tabIndex={0}
                         className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li>
-                            <a className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </a>
-                        </li>
-                        <li><a>Settings</a></li>
+                        <li><CustomerPortalButton/></li>
                         <li><a>Logout</a></li>
                     </ul>
                 </div>
