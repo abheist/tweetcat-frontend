@@ -88,7 +88,7 @@ export default function Home() {
                                                 flex items-center`}>
                                     <div className={`container mx-auto`}>
                                         <div className={`flex flex-col items-center gap-y-10`}>
-                                            <h2 className={`text-9xl font-black text-white mt-24`}>
+                                            <h2 className={`text-8xl font-black text-white mt-24`}>
                                                 The Ultimate
                                             </h2>
                                             <h3 className={`text-4xl text-white font-bold text-center w-4/5 leading-relaxed`}>
