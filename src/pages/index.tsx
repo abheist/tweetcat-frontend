@@ -69,6 +69,7 @@ export default function Home() {
                             <button
                                 className={`btn btn-lg bg-blue-500 rounded-full font-extrabold text-white mt-12 
                                             border-blue-500 shadow-lg shadow-blue-500
+                                             hover:shadow-xl hover:shadow-blue-500
                                             bg-gradient-to-b from-blue-500 to-blue-700`}
                                 onClick={() => handleLoginWithTwitter()}>
                                 SCHEDULE IN BULK NOW
@@ -117,7 +118,7 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                    <div className={`container mx-auto min-h-screen pt-24`}>
+                    <div className={`container mx-auto min-h-screen pt-36`}>
                         <div className={`flex flex-col items-center gap-y-6`}>
                             <h1 className={`text-7xl font-black text-center w-4/5 leading-snug tracking-wide`}>
                                 Designed for Solopreneurs, Businesses, and Agencies
@@ -133,6 +134,7 @@ export default function Home() {
                             <button
                                 className={`btn btn-lg bg-blue-500 rounded-full font-extrabold text-white mt-12 
                                             border-blue-500 shadow-lg shadow-blue-500 btn-wide
+                                             hover:shadow-xl hover:shadow-blue-500
                                             bg-gradient-to-b from-blue-500 to-blue-700`}
                                 onClick={() => handleLoginWithTwitter()}>
                                 BE THE BUILDER
@@ -140,7 +142,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className={`bg-blue-50`}>
-                        <div className={`container mx-auto py-48 flex flex-col items-center`}>
+                        <div className={`container mx-auto py-40 flex flex-col items-center`}>
                             <div className={`flex justify-around w-full text-center font-light`}>
                                 <div className={`flex flex-col items-center gap-y-8`}>
                                     <FiLoader className={`text-6xl text-gray-600`}/>
@@ -161,7 +163,7 @@ export default function Home() {
                             </div>
                             <button
                                 className={`btn btn-lg bg-blue-500 rounded-full font-extrabold text-white mt-24 
-                                            border-blue-500 shadow-lg shadow-blue-500
+                                            border-blue-500 shadow-lg shadow-blue-500 hover:shadow-xl hover:shadow-blue-500
                                             bg-gradient-to-b from-blue-500 to-blue-700`}
                                 onClick={() => handleLoginWithTwitter()}>
                                 GROW YOUR BUSINESS
