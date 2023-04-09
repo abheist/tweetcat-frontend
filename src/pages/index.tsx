@@ -171,6 +171,92 @@ export default function Home() {
                             </button>
                         </div>
                     </div>
+                    <div className={``}>
+                        <div className={`container mx-auto py-40 flex flex-col items-center`}>
+                            <h1 className={`text-7xl font-black text-center w-4/5 leading-snug tracking-wide`}>
+                                What our customers say
+                            </h1>
+                            <div className={`flex flex-col items-center gap-y-8 mt-12`}>
+                                <div className={`flex flex-col items-center gap-y-4`}>
+                                    <Image src="/customer1.png" alt="customer 1" width={150} height={150}
+                                           className={`rounded-full`}/>
+                                    <p className={`text-4xl font-medium text-center w-3/5 leading-relaxed`}>
+                                        “I love TweetCat! It’s so easy to use and it’s helped me schedule 1000s of
+                                        tweets in a second and saved loads of time. I highly recommend it to anyone who
+                                        wants to grow their business.”
+                                    </p>
+                                    <p className={`text-2xl font-medium text-center w-3/5 leading-relaxed`}>
+                                        - Steve Jobs
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        {/*FAQS*/}
+                        <div className={`container mx-auto py-40 flex flex-col items-center`}>
+                            <h1 className={`text-7xl font-black text-center w-4/5 leading-snug tracking-wide`}>
+                                Frequently Asked Questions
+                            </h1>
+                            <div className={`flex flex-col gap-y-8 mt-12 w-3/5`}>
+                                <div tabIndex={0}
+                                     className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+                                    <div className="collapse-title text-xl font-medium">
+                                        Will auto-retweets annoy my followers?
+                                    </div>
+                                    <div className="collapse-content">
+                                        <p>
+                                            No! In fact, 75% of them don't even see your tweets: some are sleeping,
+                                            others are just not online... Retweeting your content will allow folks from
+                                            other timezones to see it.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div tabIndex={0}
+                                     className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+                                    <div className="collapse-title text-xl font-medium">
+                                        Who is this for?
+                                    </div>
+                                    <div className="collapse-content">
+                                        <p>
+                                            Tweetcat is perfect for content creators who want to leverage twitter to
+                                            grow their business.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div tabIndex={0}
+                                     className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+                                    <div className="collapse-title text-xl font-medium">
+                                        Do you provide support?
+                                    </div>
+                                    <div className="collapse-content">
+                                        <p>
+                                            Absolutely, I'd love to hear any feedback or question you may have. Just
+                                            reach out to me on my twitter — don't hesitate!
+                                        </p>
+                                    </div>
+                                </div>
+                                <div tabIndex={0}
+                                     className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+                                    <div className="collapse-title text-xl font-medium">
+                                        Focus me to see content
+                                    </div>
+                                    <div className="collapse-content">
+                                        <p>tabIndex={0} attribute is necessary to make the div focusable</p>
+                                    </div>
+                                </div>
+                                <div tabIndex={0}
+                                     className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+                                    <div className="collapse-title text-xl font-medium">
+                                        Focus me to see content
+                                    </div>
+                                    <div className="collapse-content">
+                                        <p>tabIndex={0} attribute is necessary to make the div focusable</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div className={`bg-gray-900`}>
                         <footer className="footer container mx-auto px-16 py-24 text-gray-50 ">
                             <div className={`flex flex-col items-center -mt-4`}>
