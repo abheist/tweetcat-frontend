@@ -7,6 +7,7 @@ import localforage from "localforage";
 import Image from "next/image";
 import Layout from "@/components/layout";
 import {FiClock, FiLoader, FiSmile, FiTrendingUp} from "react-icons/fi";
+import {BsTwitter} from "react-icons/bs";
 
 // const inter = Inter({subsets: ['latin']})
 
@@ -169,6 +170,34 @@ export default function Home() {
                                 GROW YOUR BUSINESS
                             </button>
                         </div>
+                    </div>
+                    <div className={`bg-gray-900`}>
+                        <footer className="footer container mx-auto px-16 py-24 text-gray-50 ">
+                            <div className={`flex flex-col items-center -mt-4`}>
+                                <Image src={`/tweetcat_logo.png`} alt={'tweetcat logo'} width={150} height={150}/>
+                                <p className={`text-md`}>© 2023 | TweetCat</p>
+                            </div>
+                            <div>
+                                <span className="footer-title">Product</span>
+                                <a className="link link-hover">Pricing</a>
+                                <a className="link link-hover">Affliates</a>
+                            </div>
+                            <div>
+                                <span className="footer-title">Updates</span>
+                                <a className="link link-hover">About us</a>
+                                <a className="link link-hover">Contact</a>
+                                <a className="link link-hover">Blog</a>
+                            </div>
+                            <div>
+                                <span className="footer-title">Legal</span>
+                                <a className="link link-hover">Terms of use</a>
+                                <a className="link link-hover">Privacy policy</a>
+                                <a className="link link-hover">Cookie policy</a>
+                            </div>
+                            <div>
+                                <BsTwitter className={`text-4xl`}/>
+                            </div>
+                        </footer>
                     </div>
                 </Layout>
             </main>
