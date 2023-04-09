@@ -4,6 +4,8 @@ import {useQuery} from "react-query";
 import {axiosPublic} from "@/utils/axiosPublic";
 import {useEffect} from "react";
 import localforage from "localforage";
+import Image from "next/image";
+import Layout from "@/components/layout";
 
 // const inter = Inter({subsets: ['latin']})
 
@@ -55,12 +57,66 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <main className={''}>
-                <div>
-                    <button className={`bg-blue-500 px-8 py-4 rounded-full text-white`}
-                            onClick={() => handleLoginWithTwitter()}>
-                        Login with Twitter
-                    </button>
-                </div>
+                <Layout className={`bg-white min-h-screen`} sidebar={false}>
+                    <div className={`container mx-auto min-h-screen pt-24`}>
+                        <div className={`flex flex-col items-center gap-y-6`}>
+                            <Image src={`/tweetcat_logo.png`} alt={'tweetcat logo'} width={200} height={200}/>
+                            <h1 className={`text-9xl font-black`}>TweetCat</h1>
+                            <h2 className={`text-5xl text-blue-500 font-medium mt-6`}>
+                                Schedule thousands of tweets in a second
+                            </h2>
+                            <button
+                                className={`btn btn-lg bg-blue-500 rounded-full font-extrabold text-white mt-12 
+                                            border-blue-500 shadow-lg shadow-blue-500
+                                            bg-gradient-to-b from-blue-500 to-blue-700`}
+                                onClick={() => handleLoginWithTwitter()}>
+                                SCHEDULE IN BULK NOW
+                            </button>
+                        </div>
+                    </div>
+                    <div className={`bg-blue-500`}>
+                        <div className={`container mx-auto`}>
+                            <div className={`relative w-full min-h-screen`}>
+                                <Image
+                                    alt="Image Alt"
+                                    src="/tweetcat_tweets.png"
+                                    fill
+                                    className={`-mt-48`}
+                                    style={{objectFit: "contain", objectPosition: "center"}}
+                                />
+                                <div className={`absolute w-full bottom-0 h-full bg-gradient-to-t from-10% from-blue-500 via-70% via-blue-500/95 to-blue-500/0
+                                                flex items-center`}>
+                                    <div className={`container mx-auto`}>
+                                        <div className={`flex flex-col items-center gap-y-10`}>
+                                            <h2 className={`text-9xl font-black text-white mt-24`}>
+                                                The Ultimate
+                                            </h2>
+                                            <h3 className={`text-4xl text-white font-bold text-center w-4/5 leading-relaxed`}>
+                                                Twitter automation platform will help you save time and
+                                                focus on other important things, while boosting your social media
+                                                presence and extending your reach.
+                                            </h3>
+                                            <button className={`btn btn-wide btn-lg bg-blue-500 font-extrabold rounded-full
+                                                            text-white mt-12 border-blue-500 hover:border-blue-500 
+                                                            shadow-sm shadow-white hover:shadow-lg
+                                                            bg-gradient-to-b from-blue-500 to-blue-700`}
+                                                    onClick={() => handleLoginWithTwitter()}>
+                                                SAVE TIME
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={`z-20 absolute bottom-0 right-0 flex items-start`}>
+                                    <div className="chat chat-end mt-12">
+                                        <div className="chat-bubble">You underestimate my power!</div>
+                                    </div>
+                                    <Image src="/bird.png" alt="twitter bird" width={300} height={300}
+                                           className={`object-contain`}/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Layout>
             </main>
         </>
     )
