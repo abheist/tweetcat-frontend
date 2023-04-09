@@ -144,22 +144,38 @@ export default function Home() {
                     </div>
                     <div className={`bg-blue-50`}>
                         <div className={`container mx-auto py-40 flex flex-col items-center`}>
-                            <div className={`flex justify-around w-full text-center font-light`}>
-                                <div className={`flex flex-col items-center gap-y-8`}>
-                                    <FiLoader className={`text-6xl text-gray-600`}/>
-                                    <p className={`text-5xl leading-snug`}>Automate<br/>tweeting</p>
+                            <div className={`flex flex-wrap justify-around w-full text-center font-light gap-y-24`}>
+                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
+                                    <FiLoader className={`text-7xl stroke-1 text-gray-600`}/>
+                                    <p className={`text-4xl leading-snug`}>Effective time<br/>management</p>
                                 </div>
-                                <div className={`flex flex-col items-center gap-y-8`}>
-                                    <FiClock className={`text-6xl text-gray-600`}/>
-                                    <p className={`text-5xl leading-snug`}>Customize<br/>campaign</p>
+                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
+                                    <FiClock className={`text-7xl stroke-1 text-gray-600`}/>
+                                    <p className={`text-4xl leading-snug`}>Customize<br/>campaign</p>
                                 </div>
-                                <div className={`flex flex-col items-center gap-y-8`}>
-                                    <FiTrendingUp className={`text-6xl text-gray-600`}/>
-                                    <p className={`text-5xl leading-snug`}>Analyze &<br/>improve</p>
+                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
+                                    <FiTrendingUp className={`text-7xl stroke-1 text-gray-600`}/>
+                                    <p className={`text-4xl leading-snug`}>Be more<br/>discoverable</p>
                                 </div>
-                                <div className={`flex flex-col items-center gap-y-8`}>
-                                    <FiSmile className={`text-6xl text-gray-600`}/>
-                                    <p className={`text-5xl leading-snug`}>Engage &<br/>grow</p>
+                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
+                                    <FiSmile className={`text-7xl stroke-1 text-gray-600`}/>
+                                    <p className={`text-4xl leading-snug`}>Work smarter<br/>not harder</p>
+                                </div>
+                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
+                                    <FiLoader className={`text-7xl stroke-1 text-gray-600`}/>
+                                    <p className={`text-4xl leading-snug`}>Boost<br/>Engagement</p>
+                                </div>
+                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
+                                    <FiClock className={`text-7xl stroke-1 text-gray-600`}/>
+                                    <p className={`text-4xl leading-snug`}>Analyze &<br/>improve</p>
+                                </div>
+                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
+                                    <FiTrendingUp className={`text-7xl stroke-1 text-gray-600`}/>
+                                    <p className={`text-4xl leading-snug`}>Engage &<br/>grow</p>
+                                </div>
+                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
+                                    <FiSmile className={`text-7xl stroke-1 text-gray-600`}/>
+                                    <p className={`text-4xl leading-snug`}>Focus on<br/>engagement</p>
                                 </div>
                             </div>
                             <button
