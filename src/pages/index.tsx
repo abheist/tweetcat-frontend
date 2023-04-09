@@ -6,6 +6,7 @@ import {useEffect} from "react";
 import localforage from "localforage";
 import Image from "next/image";
 import Layout from "@/components/layout";
+import {FiClock, FiLoader, FiSmile, FiTrendingUp} from "react-icons/fi";
 
 // const inter = Inter({subsets: ['latin']})
 
@@ -135,6 +136,35 @@ export default function Home() {
                                             bg-gradient-to-b from-blue-500 to-blue-700`}
                                 onClick={() => handleLoginWithTwitter()}>
                                 BE THE BUILDER
+                            </button>
+                        </div>
+                    </div>
+                    <div className={`bg-blue-50`}>
+                        <div className={`container mx-auto py-48 flex flex-col items-center`}>
+                            <div className={`flex justify-around w-full text-center font-light`}>
+                                <div className={`flex flex-col items-center gap-y-8`}>
+                                    <FiLoader className={`text-6xl text-gray-600`}/>
+                                    <p className={`text-5xl leading-snug`}>Automate<br/>tweeting</p>
+                                </div>
+                                <div className={`flex flex-col items-center gap-y-8`}>
+                                    <FiClock className={`text-6xl text-gray-600`}/>
+                                    <p className={`text-5xl leading-snug`}>Customize<br/>campaign</p>
+                                </div>
+                                <div className={`flex flex-col items-center gap-y-8`}>
+                                    <FiTrendingUp className={`text-6xl text-gray-600`}/>
+                                    <p className={`text-5xl leading-snug`}>Analyze &<br/>improve</p>
+                                </div>
+                                <div className={`flex flex-col items-center gap-y-8`}>
+                                    <FiSmile className={`text-6xl text-gray-600`}/>
+                                    <p className={`text-5xl leading-snug`}>Engage &<br/>grow</p>
+                                </div>
+                            </div>
+                            <button
+                                className={`btn btn-lg bg-blue-500 rounded-full font-extrabold text-white mt-24 
+                                            border-blue-500 shadow-lg shadow-blue-500
+                                            bg-gradient-to-b from-blue-500 to-blue-700`}
+                                onClick={() => handleLoginWithTwitter()}>
+                                GROW YOUR BUSINESS
                             </button>
                         </div>
                     </div>
