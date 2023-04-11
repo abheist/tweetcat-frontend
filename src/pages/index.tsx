@@ -9,10 +9,10 @@ import Layout from "@/components/layout";
 import {
     FiClock,
     FiLoader,
-    FiMessageSquare, FiRadio,
+    FiMessageSquare,
+    FiRadio,
     FiSearch,
     FiSettings,
-    FiSmile,
     FiTarget,
     FiTrendingUp
 } from "react-icons/fi";
@@ -227,56 +227,77 @@ export default function Home() {
                                 <div tabIndex={0}
                                      className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
                                     <div className="collapse-title text-xl font-medium">
-                                        Will auto-retweets annoy my followers?
+                                        How do I get started with TweetCat?
                                     </div>
                                     <div className="collapse-content">
                                         <p>
-                                            No! In fact, 75% of them don't even see your tweets: some are sleeping,
-                                            others are just not online... Retweeting your content will allow folks from
-                                            other timezones to see it.
+                                            Signing up for TweetCat is easy. Simply choose a plan that suits your needs,
+                                            create an account, and follow the step-by-step instructions to connect your
+                                            Twitter account.
                                         </p>
                                     </div>
                                 </div>
                                 <div tabIndex={0}
                                      className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
                                     <div className="collapse-title text-xl font-medium">
-                                        Who is this for?
+                                        Can I upgrade or downgrade my plan at any time?
                                     </div>
                                     <div className="collapse-content">
                                         <p>
-                                            Tweetcat is perfect for content creators who want to leverage twitter to
-                                            grow their business.
+                                            Yes, you can easily upgrade or downgrade your plan at any time from your
+                                            account settings. The changes will be effective from the next billing cycle.
                                         </p>
                                     </div>
                                 </div>
                                 <div tabIndex={0}
                                      className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
                                     <div className="collapse-title text-xl font-medium">
-                                        Do you provide support?
+                                        Is my data safe with TweetCat?
                                     </div>
                                     <div className="collapse-content">
                                         <p>
-                                            Absolutely, I'd love to hear any feedback or question you may have. Just
-                                            reach out to me on my twitter — don't hesitate!
+                                            We take data security very seriously. Your data is protected with
+                                            industry-standard encryption, and we never share your information with third
+                                            parties.
                                         </p>
                                     </div>
                                 </div>
                                 <div tabIndex={0}
                                      className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
                                     <div className="collapse-title text-xl font-medium">
-                                        Focus me to see content
+                                        Do you offer a free trial?
                                     </div>
                                     <div className="collapse-content">
-                                        <p>tabIndex={0} attribute is necessary to make the div focusable</p>
+                                        <p>
+                                            Yes, we offer a 14-day free trial for our Pro plan. Simply sign up for the
+                                            Pro plan, and you won't be charged if you cancel within the trial
+                                            period.
+                                        </p>
                                     </div>
                                 </div>
                                 <div tabIndex={0}
                                      className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
                                     <div className="collapse-title text-xl font-medium">
-                                        Focus me to see content
+                                        Can I cancel my subscription at any time?
                                     </div>
                                     <div className="collapse-content">
-                                        <p>tabIndex={0} attribute is necessary to make the div focusable</p>
+                                        <p>
+                                            Yes, you can cancel your subscription at any time from your account
+                                            settings. Your account will remain active until the end of the current
+                                            billing cycle.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div tabIndex={0}
+                                     className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+                                    <div className="collapse-title text-xl font-medium">
+                                        What kind of support can I expect?
+                                    </div>
+                                    <div className="collapse-content">
+                                        <p>
+                                            All our plans come with email support. Pro and Enterprise plans have
+                                            priority email support.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
