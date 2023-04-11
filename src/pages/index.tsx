@@ -307,7 +307,7 @@ export default function Home() {
                         <footer className="footer container mx-auto px-16 py-24 text-gray-50 ">
                             <div className={`flex flex-col items-center -mt-4`}>
                                 <Image src={`/tweetcat_logo.png`} alt={'tweetcat logo'} width={150} height={150}/>
-                                <p className={`text-md`}>© 2023 | TweetCat</p>
+                                <p className={`text-md`}>© TweetCat 2023.<br/>All rights reserved.</p>
                             </div>
                             <div>
                                 <span className="footer-title">Product</span>
