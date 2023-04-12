@@ -7,6 +7,7 @@ import localforage from "localforage";
 import Image from "next/image";
 import Layout from "@/components/layout";
 import {
+    FiCheck,
     FiClock,
     FiLoader,
     FiMessageSquare,
@@ -59,6 +60,14 @@ export default function Home() {
     }, [response])
 
 
+    let painPoints = [
+        "Time-consuming manual scheduling Juggling multiple tasks and struggling to find time to consistently post on Twitter can be exhausting.",
+        "Inefficient audience growth: Without the right tools, growing your Twitter following can be a slow and frustrating process.",
+        "Low engagement rates: Posting at the wrong times or without a clear strategy can lead to low engagement and missed opportunities.",
+        "Difficulty managing multiple accounts: If you're responsible for multiple Twitter accounts, keeping track of all your activities can be a daunting task.",
+        "Limited analytics and insights: Not having access to comprehensive analytics can make it difficult to measure your performance and adjust your strategy accordingly.",
+    ]
+
     return (
         <>
             <Head>
@@ -73,11 +82,15 @@ export default function Home() {
                         <div className={`flex flex-col items-center gap-y-6`}>
                             <Image src={`/tweetcat_logo.png`} alt={'tweetcat logo'} width={200} height={200}/>
                             <h1 className={`text-9xl font-black`}>TweetCat</h1>
-                            <h2 className={`text-5xl text-blue-500 font-medium mt-6`}>
+                            <h2 className={`text-5xl text-blue-500 font-bold mt-6`}>
                                 Schedule thousands of tweets in a second
                             </h2>
+                            <h3 className={`text-2xl font-medium text-slate-500 -mt-2 text-center w-2/5`}>
+                                Experience Unparalleled Efficiency with TweetCat and take control of your Twitter
+                                presence
+                            </h3>
                             <button
-                                className={`btn btn-lg bg-blue-500 rounded-full font-extrabold text-white mt-12 
+                                className={`btn btn-lg bg-blue-500 rounded-full font-extrabold text-white mt-10 
                                             border-blue-500 shadow-lg shadow-blue-500
                                              hover:shadow-xl hover:shadow-blue-500
                                             bg-gradient-to-b from-blue-500 to-blue-700`}
@@ -99,17 +112,26 @@ export default function Home() {
                                 <div className={`absolute w-full bottom-0 h-full bg-gradient-to-t from-10% from-blue-500 via-70% via-blue-500/95 to-blue-500/0
                                                 flex items-center`}>
                                     <div className={`container mx-auto`}>
-                                        <div className={`flex flex-col items-center gap-y-10`}>
-                                            <h2 className={`text-8xl font-black text-white mt-24`}>
-                                                The Ultimate
+                                        <div className={`flex flex-col items-center`}>
+                                            <h2 className={`text-5xl font-bold w-4/5 leading-snug tracking-wide text-white text-center mt-20`}>
+                                                Overcome Twitter Challenges with TweetCat
                                             </h2>
-                                            <h3 className={`text-4xl text-white font-bold text-center w-4/5 leading-relaxed`}>
+                                            <h3 className={`text-2xl text-white font-medium text-center w-4/5 mt-6 leading-relaxed`}>
                                                 Twitter automation platform will help you save time and
                                                 focus on other important things, while boosting your social media
                                                 presence and extending your reach.
                                             </h3>
+                                            <div className={`text-white flex flex-wrap gap-x-8 gap-y-8 justify-center mt-10`}>
+                                                {painPoints.map((feature) => (
+                                                    <li key={feature} className="flex gap-x-3 w-3/12 border rounded-2xl px-8 py-4">
+                                                        <FiCheck className="h-6 w-5 flex-none text-white"
+                                                                 aria-hidden="true"/>
+                                                        {feature}
+                                                    </li>
+                                                ))}
+                                            </div>
                                             <button className={`btn btn-wide btn-lg bg-blue-500 font-extrabold rounded-full
-                                                            text-white mt-12 border-blue-500 hover:border-blue-500 
+                                                            text-white mt-20 border-blue-500 hover:border-blue-500 
                                                             shadow-sm shadow-white hover:shadow-lg
                                                             bg-gradient-to-b from-blue-500 to-blue-700`}
                                                     onClick={() => handleLoginWithTwitter()}>
@@ -118,7 +140,7 @@ export default function Home() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className={`z-20 absolute bottom-0 right-0 flex items-start`}>
+                                <div className={`z-20 absolute bottom-0 right-0 -mb-12 -mr-32 flex items-start`}>
                                     <div className="chat chat-end mt-12">
                                         <div className="chat-bubble">You underestimate my power!</div>
                                     </div>
