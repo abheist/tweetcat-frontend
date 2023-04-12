@@ -348,6 +348,7 @@ export default function Home() {
                                 <span className="footer-title">Legal</span>
                                 <Link href={`/terms`} className="link link-hover">Terms of use</Link>
                                 <Link href={`/privacy`} className="link link-hover">Privacy policy</Link>
+                                <Link href={`/cookies`} className="link link-hover">Cookies policy</Link>
                             </div>
                             <div>
                                 <BsTwitter className={`text-4xl`}/>
