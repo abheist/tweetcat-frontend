@@ -4,21 +4,14 @@ import {useQuery} from "react-query";
 import {axiosPublic} from "@/utils/axiosPublic";
 import {useEffect} from "react";
 import localforage from "localforage";
-import Image from "next/image";
 import Layout from "@/components/layout";
-import {
-    FiCheck,
-    FiClock,
-    FiLoader,
-    FiMessageSquare,
-    FiRadio,
-    FiSearch,
-    FiSettings,
-    FiTarget,
-    FiTrendingUp
-} from "react-icons/fi";
-import {BsTwitter} from "react-icons/bs";
-import Link from "next/link";
+import {Footer} from "@/components/footer";
+import {FAQs} from "@/components/landingPage/FAQs";
+import {Testimonials} from "@/components/landingPage/testimonials";
+import {Benefits} from "@/components/landingPage/benefits";
+import {PainPointsSection} from "@/components/landingPage/painPointsSection";
+import {AnalyticsSection} from "@/components/landingPage/analyticsSection";
+import {IndexHeroSection} from "@/components/landingPage/indexHeroSection";
 
 // const inter = Inter({subsets: ['latin']})
 
@@ -60,15 +53,6 @@ export default function Home() {
         }
     }, [response])
 
-
-    let painPoints = [
-        "Time-consuming manual scheduling Juggling multiple tasks and struggling to find time to consistently post on Twitter can be exhausting.",
-        "Inefficient audience growth: Without the right tools, growing your Twitter following can be a slow and frustrating process.",
-        "Low engagement rates: Posting at the wrong times or without a clear strategy can lead to low engagement and missed opportunities.",
-        "Difficulty managing multiple accounts: If you're responsible for multiple Twitter accounts, keeping track of all your activities can be a daunting task.",
-        "Limited analytics and insights: Not having access to comprehensive analytics can make it difficult to measure your performance and adjust your strategy accordingly.",
-    ]
-
     return (
         <>
             <Head>
@@ -79,282 +63,13 @@ export default function Home() {
             </Head>
             <main className={''}>
                 <Layout className={`bg-white min-h-screen`} sidebar={false}>
-                    <div className={`container mx-auto min-h-screen pt-24`}>
-                        <div className={`flex flex-col items-center gap-y-6`}>
-                            <Image src={`/tweetcat_logo.png`} alt={'tweetcat logo'} width={200} height={200}/>
-                            <h1 className={`text-9xl font-black`}>TweetCat</h1>
-                            <h2 className={`text-5xl text-blue-500 font-bold mt-6`}>
-                                Schedule thousands of tweets in a second
-                            </h2>
-                            <h3 className={`text-2xl font-medium text-slate-500 -mt-2 text-center w-2/5`}>
-                                Experience Unparalleled Efficiency with TweetCat and take control of your Twitter
-                                presence
-                            </h3>
-                            <button
-                                className={`btn btn-lg bg-blue-500 rounded-full font-extrabold text-white mt-10 
-                                            border-blue-500 shadow-lg shadow-blue-500
-                                             hover:shadow-xl hover:shadow-blue-500
-                                            bg-gradient-to-b from-blue-500 to-blue-700`}
-                                onClick={() => handleLoginWithTwitter()}>
-                                SCHEDULE IN BULK NOW
-                            </button>
-                        </div>
-                    </div>
-                    <div className={`bg-blue-500`}>
-                        <div className={`container mx-auto`}>
-                            <div className={`relative w-full min-h-screen`}>
-                                <Image
-                                    alt="Image Alt"
-                                    src="/tweetcat_tweets.png"
-                                    fill
-                                    className={`-mt-48`}
-                                    style={{objectFit: "contain", objectPosition: "center"}}
-                                />
-                                <div className={`absolute w-full bottom-0 h-full bg-gradient-to-t from-10% from-blue-500 via-70% via-blue-500/95 to-blue-500/0
-                                                flex items-center`}>
-                                    <div className={`container mx-auto`}>
-                                        <div className={`flex flex-col items-center`}>
-                                            <h2 className={`text-5xl font-bold w-4/5 leading-snug tracking-wide text-white text-center mt-20`}>
-                                                Overcome Twitter Challenges with TweetCat
-                                            </h2>
-                                            <h3 className={`text-2xl text-white font-medium text-center w-4/5 mt-6 leading-relaxed`}>
-                                                Twitter automation platform will help you save time and
-                                                focus on other important things, while boosting your social media
-                                                presence and extending your reach.
-                                            </h3>
-                                            <div
-                                                className={`text-white flex flex-wrap gap-x-8 gap-y-8 justify-center mt-10`}>
-                                                {painPoints.map((feature) => (
-                                                    <li key={feature}
-                                                        className="flex gap-x-3 w-3/12 border rounded-2xl px-8 py-4">
-                                                        <FiCheck className="h-6 w-5 flex-none text-white"
-                                                                 aria-hidden="true"/>
-                                                        {feature}
-                                                    </li>
-                                                ))}
-                                            </div>
-                                            <button className={`btn btn-wide btn-lg bg-blue-500 font-extrabold rounded-full
-                                                            text-white mt-20 border-blue-500 hover:border-blue-500 
-                                                            shadow-sm shadow-white hover:shadow-lg
-                                                            bg-gradient-to-b from-blue-500 to-blue-700`}
-                                                    onClick={() => handleLoginWithTwitter()}>
-                                                SAVE TIME
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={`z-20 absolute bottom-0 right-0 -mb-12 -mr-32 flex items-start`}>
-                                    <div className="chat chat-end mt-12">
-                                        <div className="chat-bubble">You underestimate my power!</div>
-                                    </div>
-                                    <Image src="/bird.png" alt="twitter bird" width={300} height={300}
-                                           className={`object-contain`}/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={`container mx-auto min-h-screen pt-36`}>
-                        <div className={`flex flex-col items-center gap-y-6`}>
-                            <h1 className={`text-7xl font-black text-center w-4/5 leading-snug tracking-wide`}>
-                                Designed for Solopreneurs, Businesses, and Agencies
-                            </h1>
-                            <div className={`relative w-11/12 h-48 mt-8`}>
-                                <Image src="/tweetcat_analytics.png" alt="TweetCat analytics" fill
-                                       style={{objectFit: "contain", objectPosition: "center"}}/>
-                            </div>
-                            <p className={`text-4xl font-medium text-center w-3/5 leading-relaxed`}>
-                                Focus on your passion, focus on the thing, focus on your destiny, call and be the
-                                builder
-                            </p>
-                            <button
-                                className={`btn btn-lg bg-blue-500 rounded-full font-extrabold text-white mt-12 
-                                            border-blue-500 shadow-lg shadow-blue-500 btn-wide
-                                             hover:shadow-xl hover:shadow-blue-500
-                                            bg-gradient-to-b from-blue-500 to-blue-700`}
-                                onClick={() => handleLoginWithTwitter()}>
-                                BE THE BUILDER
-                            </button>
-                        </div>
-                    </div>
-                    <div className={`bg-blue-50`}>
-                        <div className={`container mx-auto py-40 flex flex-col items-center`}>
-                            <div className={`flex flex-wrap justify-around w-full text-center font-light gap-y-24`}>
-                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                                    <FiClock className={`text-7xl stroke-1 text-gray-600`}/>
-                                    <p className={`text-4xl leading-snug`}>Effective time<br/>management</p>
-                                </div>
-                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                                    <FiSettings className={`text-7xl stroke-1 text-gray-600`}/>
-                                    <p className={`text-4xl leading-snug`}>Customize<br/>campaign</p>
-                                </div>
-                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                                    <FiSearch className={`text-7xl stroke-1 text-gray-600`}/>
-                                    <p className={`text-4xl leading-snug`}>Be more<br/>discoverable</p>
-                                </div>
-                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                                    <FiLoader className={`text-7xl stroke-1 text-gray-600`}/>
-                                    <p className={`text-4xl leading-snug`}>Work smarter<br/>not harder</p>
-                                </div>
-                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                                    <FiRadio className={`text-7xl stroke-1 text-gray-600`}/>
-                                    <p className={`text-4xl leading-snug`}>Boost<br/>Engagement</p>
-                                </div>
-                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                                    <FiTrendingUp className={`text-7xl stroke-1 text-gray-600`}/>
-                                    <p className={`text-4xl leading-snug`}>Analyze &<br/>improve</p>
-                                </div>
-                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                                    <FiMessageSquare className={`text-7xl stroke-1 text-gray-600`}/>
-                                    <p className={`text-4xl leading-snug`}>Engage &<br/>grow</p>
-                                </div>
-                                <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                                    <FiTarget className={`text-7xl stroke-1 text-gray-600`}/>
-                                    <p className={`text-4xl leading-snug`}>Focus on<br/>engagement</p>
-                                </div>
-                            </div>
-                            <button
-                                className={`btn btn-lg bg-blue-500 rounded-full font-extrabold text-white mt-24 
-                                            border-blue-500 shadow-lg shadow-blue-500 hover:shadow-xl hover:shadow-blue-500
-                                            bg-gradient-to-b from-blue-500 to-blue-700`}
-                                onClick={() => handleLoginWithTwitter()}>
-                                GROW YOUR BUSINESS
-                            </button>
-                        </div>
-                    </div>
-                    <div className={``}>
-                        <div className={`container mx-auto py-40 flex flex-col items-center`}>
-                            <h1 className={`text-7xl font-black text-center w-4/5 leading-snug tracking-wide`}>
-                                What our customers say
-                            </h1>
-                            <div className={`flex flex-col items-center gap-y-8 mt-12`}>
-                                <div className={`flex flex-col items-center gap-y-4`}>
-                                    <Image src="/customer1.png" alt="customer 1" width={150} height={150}
-                                           className={`rounded-full`}/>
-                                    <p className={`text-4xl font-medium text-center w-3/5 leading-relaxed`}>
-                                        “I love TweetCat! It’s so easy to use and it’s helped me schedule 1000s of
-                                        tweets in a second and saved loads of time. I highly recommend it to anyone who
-                                        wants to grow their business.”
-                                    </p>
-                                    <p className={`text-2xl font-medium text-center w-3/5 leading-relaxed`}>
-                                        - Steve Jobs
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        {/*FAQS*/}
-                        <div className={`container mx-auto py-40 flex flex-col items-center`}>
-                            <h1 className={`text-7xl font-black text-center w-4/5 leading-snug tracking-wide`}>
-                                Frequently Asked Questions
-                            </h1>
-                            <div className={`flex flex-col gap-y-8 mt-12 w-3/5`}>
-                                <div tabIndex={0}
-                                     className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                                    <div className="collapse-title text-xl font-medium">
-                                        How do I get started with TweetCat?
-                                    </div>
-                                    <div className="collapse-content">
-                                        <p>
-                                            Signing up for TweetCat is easy. Simply choose a plan that suits your needs,
-                                            create an account, and follow the step-by-step instructions to connect your
-                                            Twitter account.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div tabIndex={0}
-                                     className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                                    <div className="collapse-title text-xl font-medium">
-                                        Can I upgrade or downgrade my plan at any time?
-                                    </div>
-                                    <div className="collapse-content">
-                                        <p>
-                                            Yes, you can easily upgrade or downgrade your plan at any time from your
-                                            account settings. The changes will be effective from the next billing cycle.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div tabIndex={0}
-                                     className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                                    <div className="collapse-title text-xl font-medium">
-                                        Is my data safe with TweetCat?
-                                    </div>
-                                    <div className="collapse-content">
-                                        <p>
-                                            We take data security very seriously. Your data is protected with
-                                            industry-standard encryption, and we never share your information with third
-                                            parties.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div tabIndex={0}
-                                     className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                                    <div className="collapse-title text-xl font-medium">
-                                        Do you offer a free trial?
-                                    </div>
-                                    <div className="collapse-content">
-                                        <p>
-                                            Yes, we offer a 14-day free trial for our Pro plan. Simply sign up for the
-                                            Pro plan, and you won't be charged if you cancel within the trial
-                                            period.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div tabIndex={0}
-                                     className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                                    <div className="collapse-title text-xl font-medium">
-                                        Can I cancel my subscription at any time?
-                                    </div>
-                                    <div className="collapse-content">
-                                        <p>
-                                            Yes, you can cancel your subscription at any time from your account
-                                            settings. Your account will remain active until the end of the current
-                                            billing cycle.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div tabIndex={0}
-                                     className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                                    <div className="collapse-title text-xl font-medium">
-                                        What kind of support can I expect?
-                                    </div>
-                                    <div className="collapse-content">
-                                        <p>
-                                            All our plans come with email support. Pro and Enterprise plans have
-                                            priority email support.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={`bg-gray-900`}>
-                        <footer className="footer container mx-auto px-16 py-24 text-gray-50 ">
-                            <div className={`flex flex-col items-center -mt-4`}>
-                                <Image src={`/tweetcat_logo.png`} alt={'tweetcat logo'} width={150} height={150}/>
-                                <p className={`text-md`}>© TweetCat 2023.<br/>All rights reserved.</p>
-                            </div>
-                            <div>
-                                <span className="footer-title">Product</span>
-                                <Link href={`pricing`} className="link link-hover">Pricing</Link>
-                                <Link href={`affliates`} className="link link-hover">Affliates</Link>
-                            </div>
-                            <div>
-                                <span className="footer-title">Updates</span>
-                                <Link href={`/contact`} className="link link-hover">Contact</Link>
-                                <Link href={`/blog`} className="link link-hover">Blog</Link>
-                            </div>
-                            <div>
-                                <span className="footer-title">Legal</span>
-                                <Link href={`/terms`} className="link link-hover">Terms of use</Link>
-                                <Link href={`/privacy`} className="link link-hover">Privacy policy</Link>
-                                <Link href={`/cookies`} className="link link-hover">Cookies policy</Link>
-                            </div>
-                            <div>
-                                <BsTwitter className={`text-4xl`}/>
-                            </div>
-                        </footer>
-                    </div>
+                    <IndexHeroSection onClick={() => handleLoginWithTwitter()}/>
+                    <PainPointsSection onClick={() => handleLoginWithTwitter()}/>
+                    <AnalyticsSection onClick={() => handleLoginWithTwitter()}/>
+                    <Benefits onClick={() => handleLoginWithTwitter()}/>
+                    <Testimonials/>
+                    <FAQs/>
+                    <Footer/>
                 </Layout>
             </main>
         </>
