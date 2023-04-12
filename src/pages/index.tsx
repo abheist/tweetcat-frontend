@@ -18,6 +18,7 @@ import {
     FiTrendingUp
 } from "react-icons/fi";
 import {BsTwitter} from "react-icons/bs";
+import Link from "next/link";
 
 // const inter = Inter({subsets: ['latin']})
 
@@ -121,9 +122,11 @@ export default function Home() {
                                                 focus on other important things, while boosting your social media
                                                 presence and extending your reach.
                                             </h3>
-                                            <div className={`text-white flex flex-wrap gap-x-8 gap-y-8 justify-center mt-10`}>
+                                            <div
+                                                className={`text-white flex flex-wrap gap-x-8 gap-y-8 justify-center mt-10`}>
                                                 {painPoints.map((feature) => (
-                                                    <li key={feature} className="flex gap-x-3 w-3/12 border rounded-2xl px-8 py-4">
+                                                    <li key={feature}
+                                                        className="flex gap-x-3 w-3/12 border rounded-2xl px-8 py-4">
                                                         <FiCheck className="h-6 w-5 flex-none text-white"
                                                                  aria-hidden="true"/>
                                                         {feature}
@@ -333,19 +336,18 @@ export default function Home() {
                             </div>
                             <div>
                                 <span className="footer-title">Product</span>
-                                <a className="link link-hover">Pricing</a>
-                                <a className="link link-hover">Affliates</a>
+                                <Link href={`pricing`} className="link link-hover">Pricing</Link>
+                                <Link href={`affliates`} className="link link-hover">Affliates</Link>
                             </div>
                             <div>
                                 <span className="footer-title">Updates</span>
-                                <a className="link link-hover">About us</a>
-                                <a className="link link-hover">Contact</a>
-                                <a className="link link-hover">Blog</a>
+                                <Link href={`/contact`} className="link link-hover">Contact</Link>
+                                <Link href={`/blog`} className="link link-hover">Blog</Link>
                             </div>
                             <div>
                                 <span className="footer-title">Legal</span>
-                                <a className="link link-hover">Terms of use</a>
-                                <a className="link link-hover">Privacy policy</a>
+                                <Link href={`/terms`} className="link link-hover">Terms of use</Link>
+                                <Link href={`/privacy`} className="link link-hover">Privacy policy</Link>
                             </div>
                             <div>
                                 <BsTwitter className={`text-4xl`}/>
