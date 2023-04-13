@@ -1,6 +1,11 @@
 import {MdPersonAdd, MdShowChart, MdSupervisedUserCircle, MdThumbDown, MdTimer} from "react-icons/md";
+import {TwitterLoginButton} from "@/components/twitterLoginButton";
 
-export function PainPointsSection(props: { onClick: () => void }) {
+interface PainPointProps {
+    onClick: () => void
+}
+
+export function PainPointsSection({ onClick }: PainPointProps) {
     let painPoints = [
         {
             icon: <MdTimer className="h-7 w-7 flex-none text-white" aria-hidden="true"/>,
@@ -43,13 +48,7 @@ export function PainPointsSection(props: { onClick: () => void }) {
                     </div>
                 ))}
             </div>
-            <button className={`btn btn-wide btn-lg bg-blue-500 font-extrabold rounded-full
-                                                            text-white mt-20 border-blue-500 hover:border-blue-500 
-                                                            shadow-sm shadow-white hover:shadow-lg
-                                                            bg-gradient-to-b from-blue-500 to-blue-700`}
-                    onClick={props.onClick}>
-                SAVE TIME
-            </button>
+            <TwitterLoginButton onClick={onClick} name={`SAVE TIME`} wide/>
         </div>
     </div>
         ;

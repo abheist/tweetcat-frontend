@@ -12,7 +12,6 @@ import {Benefits} from "@/components/landingPage/benefits";
 import {PainPointsSection} from "@/components/landingPage/painPointsSection";
 import {AnalyticsSection} from "@/components/landingPage/analyticsSection";
 import {IndexHeroSection} from "@/components/landingPage/indexHeroSection";
-import Image from "next/image";
 
 // const inter = Inter({subsets: ['latin']})
 
@@ -65,14 +64,6 @@ export default function Home() {
             <main className={''}>
                 <Layout className={`bg-white min-h-screen`} sidebar={false}>
                     <IndexHeroSection onClick={() => handleLoginWithTwitter()}/>
-                   {/* <div className={`relative`}>
-                        <Image
-                            alt="Image Alt"
-                            src="/tweetcat_tweets.png"
-                            fill
-                            style={{objectFit: "contain", objectPosition: "center"}}
-                        />
-                    </div>*/}
                     <PainPointsSection onClick={() => handleLoginWithTwitter()}/>
                     <Benefits onClick={() => handleLoginWithTwitter()}/>
                     <AnalyticsSection onClick={() => handleLoginWithTwitter()}/>

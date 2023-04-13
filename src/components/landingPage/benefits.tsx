@@ -9,8 +9,13 @@ import {
     FiTrendingUp
 } from "react-icons/fi";
 import {GoZap} from "react-icons/go";
+import {TwitterLoginButton} from "@/components/twitterLoginButton";
 
-export function Benefits(props: { onClick: () => void }) {
+interface BenefitsProps {
+    onClick: () => void
+}
+
+export function Benefits({onClick}: BenefitsProps) {
     return <div className={``}>
         <div className={`container mx-auto py-40 flex flex-col items-center`}>
             <div className={`flex flex-wrap justify-around w-full text-center font-light gap-y-24`}>
@@ -51,13 +56,7 @@ export function Benefits(props: { onClick: () => void }) {
                     <p className={`text-3xl font-bold leading-snug text-gray-950`}>Focus on<br/>engagement</p>
                 </div>
             </div>
-            <button
-                className={`btn btn-lg bg-blue-500 rounded-full font-extrabold text-white mt-24 
-                                            border-blue-500 shadow-lg shadow-blue-500 hover:shadow-xl hover:shadow-blue-500
-                                            bg-gradient-to-b from-blue-500 to-blue-700`}
-                onClick={props.onClick}>
-                GROW YOUR BUSINESS
-            </button>
+            <TwitterLoginButton onClick={onClick} name={`GROW YOUR BUSINESS`}/>
         </div>
     </div>;
 }

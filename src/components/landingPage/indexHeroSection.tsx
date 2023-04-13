@@ -1,6 +1,11 @@
 import Image from "next/image";
+import {TwitterLoginButton} from "@/components/twitterLoginButton";
 
-export function IndexHeroSection(props: { onClick: () => void }) {
+interface IndexHeroSectionProps {
+    onClick: () => void;
+}
+
+export function IndexHeroSection({onClick}: IndexHeroSectionProps) {
     return <div className={`container mx-auto pt-24`}>
         <div className={`flex flex-col items-center gap-y-6`}>
             <Image src={`/tweetcat_logo.png`} alt={"tweetcat logo"} width={200} height={200}/>
@@ -12,14 +17,7 @@ export function IndexHeroSection(props: { onClick: () => void }) {
                 Experience Unparalleled Efficiency with TweetCat and take control of your Twitter
                 presence
             </h3>
-            <button
-                className={`btn btn-lg bg-blue-500 rounded-full font-extrabold text-white mt-10 
-                                            border-blue-500 shadow-lg shadow-blue-500
-                                             hover:shadow-xl hover:shadow-blue-500
-                                            bg-gradient-to-b from-blue-500 to-blue-700`}
-                onClick={props.onClick}>
-                SCHEDULE IN BULK NOW
-            </button>
+            <TwitterLoginButton onClick={onClick} name={`SCHEDULE IN BULK NOW`}/>
         </div>
     </div>;
 }
