@@ -74,8 +74,8 @@ export default function Home() {
                         />
                     </div>*/}
                     <PainPointsSection onClick={() => handleLoginWithTwitter()}/>
-                    <AnalyticsSection onClick={() => handleLoginWithTwitter()}/>
                     <Benefits onClick={() => handleLoginWithTwitter()}/>
+                    <AnalyticsSection onClick={() => handleLoginWithTwitter()}/>
                     <Testimonials/>
                     <FAQs/>
                     <Footer/>

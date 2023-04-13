@@ -8,42 +8,47 @@ import {
     FiTarget,
     FiTrendingUp
 } from "react-icons/fi";
+import {GoZap} from "react-icons/go";
 
 export function Benefits(props: { onClick: () => void }) {
-    return <div className={`bg-blue-50`}>
+    return <div className={``}>
         <div className={`container mx-auto py-40 flex flex-col items-center`}>
             <div className={`flex flex-wrap justify-around w-full text-center font-light gap-y-24`}>
                 <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                    <FiClock className={`text-7xl stroke-1 text-gray-600`}/>
-                    <p className={`text-4xl leading-snug`}>Effective time<br/>management</p>
+                    <FiClock className={`text-7xl stroke-2 text-gray-950`}/>
+                    <p className={`text-3xl font-bold leading-snug text-gray-950`}>Effective time<br/>management</p>
                 </div>
                 <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                    <FiSettings className={`text-7xl stroke-1 text-gray-600`}/>
-                    <p className={`text-4xl leading-snug`}>Customize<br/>campaign</p>
+                    <FiSettings className={`text-7xl stroke-2 text-gray-950`}/>
+                    <div className={`relative`}>
+                        <GoZap className={`text-yellow-500 text-7xl absolute`}/>
+                        <p className={`text-3xl font-bold leading-snug text-gray-950 relative`}>Customize<br/>campaign
+                        </p>
+                    </div>
                 </div>
                 <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                    <FiSearch className={`text-7xl stroke-1 text-gray-600`}/>
-                    <p className={`text-4xl leading-snug`}>Be more<br/>discoverable</p>
+                    <FiSearch className={`text-7xl stroke-2 text-gray-950`}/>
+                    <p className={`text-3xl font-bold leading-snug text-gray-950`}>Be more<br/>discoverable</p>
                 </div>
                 <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                    <FiLoader className={`text-7xl stroke-1 text-gray-600`}/>
-                    <p className={`text-4xl leading-snug`}>Work smarter<br/>not harder</p>
+                    <FiLoader className={`text-7xl stroke-2 text-gray-950`}/>
+                    <p className={`text-3xl font-bold leading-snug text-gray-950`}>Work smarter<br/>not harder</p>
                 </div>
                 <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                    <FiRadio className={`text-7xl stroke-1 text-gray-600`}/>
-                    <p className={`text-4xl leading-snug`}>Boost<br/>Engagement</p>
+                    <FiRadio className={`text-7xl stroke-2 text-gray-950`}/>
+                    <p className={`text-3xl font-bold leading-snug text-gray-950`}>Boost<br/>Engagement</p>
                 </div>
                 <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                    <FiTrendingUp className={`text-7xl stroke-1 text-gray-600`}/>
-                    <p className={`text-4xl leading-snug`}>Analyze &<br/>improve</p>
+                    <FiTrendingUp className={`text-7xl stroke-2 text-gray-950`}/>
+                    <p className={`text-3xl font-bold leading-snug text-gray-950`}>Analyze &<br/>improve</p>
                 </div>
                 <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                    <FiMessageSquare className={`text-7xl stroke-1 text-gray-600`}/>
-                    <p className={`text-4xl leading-snug`}>Engage &<br/>grow</p>
+                    <FiMessageSquare className={`text-7xl stroke-2 text-gray-950`}/>
+                    <p className={`text-3xl font-bold leading-snug text-gray-950`}>Engage &<br/>grow</p>
                 </div>
                 <div className={`flex flex-col items-center gap-y-8 w-1/4`}>
-                    <FiTarget className={`text-7xl stroke-1 text-gray-600`}/>
-                    <p className={`text-4xl leading-snug`}>Focus on<br/>engagement</p>
+                    <FiTarget className={`text-7xl stroke-2 text-gray-950`}/>
+                    <p className={`text-3xl font-bold leading-snug text-gray-950`}>Focus on<br/>engagement</p>
                 </div>
             </div>
             <button
