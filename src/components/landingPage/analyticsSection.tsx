@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export function AnalyticsSection(props: { onClick: () => void }) {
-    return <div className={`container mx-auto min-h-screen pt-36`}>
+    return <div className={`container mx-auto my-64`}>
         <div className={`flex flex-col items-center gap-y-6`}>
             <h1 className={`text-7xl font-black text-center w-4/5 leading-snug tracking-wide`}>
                 Designed for Solopreneurs, Businesses, and Agencies

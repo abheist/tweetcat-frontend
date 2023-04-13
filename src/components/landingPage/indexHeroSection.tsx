@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export function IndexHeroSection(props: { onClick: () => void }) {
-    return <div className={`container mx-auto min-h-screen pt-24`}>
+    return <div className={`container mx-auto pt-24`}>
         <div className={`flex flex-col items-center gap-y-6`}>
             <Image src={`/tweetcat_logo.png`} alt={"tweetcat logo"} width={200} height={200}/>
             <h1 className={`text-9xl font-black`}>TweetCat</h1>
