@@ -16,5 +16,5 @@ export default function CustomerPortalButton() {
         }
     }
 
-    return <button className={`btn`} onClick={handleClick}>Manage Subscription</button>
+    return <button onClick={handleClick}>Manage Subscription</button>
 }

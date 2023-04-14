@@ -8,15 +8,6 @@ import {TweetInputArea} from "@/components/tweetInputArea";
 
 const Tweet = () => {
 
-    const [content, setContent] = React.useState("")
-
-    const onContentChange = React.useCallback((evt: any) => {
-        const sanitizeConf = {};
-
-        setContent(sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf))
-    }, [])
-
-
     return (
         <Layout className={``}>
             <div className="drawer drawer-end">
@@ -24,9 +15,9 @@ const Tweet = () => {
                 <div className="drawer-content">
                     <div className={`flex`}>
                         <WriteSidebar/>
-                        <div className={`flex-grow`}>
+                        <div className={`flex-grow h-screen overflow-y-auto`}>
                             <TweetHeader/>
-                            <TweetInputArea onChange={onContentChange} html={content}/>
+                            <TweetInputArea/>
                         </div>
                     </div>
                 </div>
