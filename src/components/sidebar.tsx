@@ -1,5 +1,4 @@
-import {FiFeather, FiHome} from "react-icons/fi";
-import React, {ReactNode} from "react";
+import React from "react";
 import Link from "next/link";
 import CustomerPortalButton from "@/components/customerPortalButton";
 import {logout} from "@/utils/fetchMiddleware";
