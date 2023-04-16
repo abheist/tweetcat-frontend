@@ -49,7 +49,7 @@ export default function Home() {
     useEffect(() => {
         if (response?.data?.username) {
             // @ts-ignore
-            window.location = '/home'
+            window.location = '/tweets'
         }
     }, [response])
 
