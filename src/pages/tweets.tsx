@@ -8,7 +8,7 @@ const Tweets = () => {
 
     return (
         <Layout className={`py-16`}>
-            <div className={`container mx-auto px-48`}>
+            <div className={`container max-w-7xl mx-auto px-4`}>
                 <UploadTweetFile/>
                 <div className={`mt-8`}>
                     <TweetTable/>
