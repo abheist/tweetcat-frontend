@@ -16,7 +16,7 @@ const Email = () => {
     const onSubmit = async (data: any) => {
         const response = await mutation.mutateAsync(data)
         if (response.status === 200) {
-            await router.push('/home')
+            await router.push('/tweets')
         }
     }
 
