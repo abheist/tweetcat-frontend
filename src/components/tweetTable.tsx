@@ -52,8 +52,13 @@ export function TweetTable() {
                 response?.pages.map((group, i) => group?.data?.results.map((tweet: any) => (
                         <tr key={tweet.id}>
                             <td className={`truncate text-ellipsis pl-6`}>{tweet.tweetText}</td>
-                            <td className={`text-end pr-6`}>{tweet.lastPublishedTime ||
-                                <div className="badge badge-secondary badge-outline">Not published yet</div>}</td>
+                            <td className={`text-end pr-6`}>
+                                {
+                                    tweet.lastPublishedTime
+                                    ||
+                                    <div className="badge badge-secondary badge-outline">Not published yet</div>
+                                }
+                            </td>
                         </tr>
                     ))
                 )
