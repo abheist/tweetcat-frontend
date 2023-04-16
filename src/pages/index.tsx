@@ -73,7 +73,7 @@ export default function Home() {
                     <AnalyticsSection onClick={() => handleLoginWithTwitter()}/>
                     <Testimonials/>
                     <FAQs/>
-                    <Footer/>
+                    <Footer className={`mt-12`}/>
                 </Layout>
             </main>
         </>

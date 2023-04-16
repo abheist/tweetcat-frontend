@@ -1,14 +1,14 @@
 export function FAQs() {
     return <div>
         {/*FAQS*/}
-        <div className={`container mx-auto py-40 flex flex-col items-center`}>
-            <h1 className={`text-7xl font-black text-center w-4/5 leading-snug tracking-wide`}>
+        <div className={`container mx-auto md:py-40 flex flex-col items-center max-w-7xl px-4`}>
+            <h1 className={`text-3xl md:text-7xl font-black text-center leading-snug tracking-wide`}>
                 Frequently Asked Questions
             </h1>
-            <div className={`flex flex-col gap-y-8 mt-12 w-3/5`}>
+            <div className={`flex flex-col gap-y-4 md:gap-y-8 mt-12 md:w-3/5`}>
                 <div tabIndex={0}
                      className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                    <div className="collapse-title text-xl font-medium">
+                    <div className="collapse-title text-md md:text-xl font-medium">
                         How do I get started with TweetCat?
                     </div>
                     <div className="collapse-content">
@@ -21,7 +21,7 @@ export function FAQs() {
                 </div>
                 <div tabIndex={0}
                      className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                    <div className="collapse-title text-xl font-medium">
+                    <div className="collapse-title text-md md:text-xl font-medium">
                         Can I upgrade or downgrade my plan at any time?
                     </div>
                     <div className="collapse-content">
@@ -33,7 +33,7 @@ export function FAQs() {
                 </div>
                 <div tabIndex={0}
                      className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                    <div className="collapse-title text-xl font-medium">
+                    <div className="collapse-title text-md md:text-xl font-medium">
                         Is my data safe with TweetCat?
                     </div>
                     <div className="collapse-content">
@@ -46,7 +46,7 @@ export function FAQs() {
                 </div>
                 <div tabIndex={0}
                      className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                    <div className="collapse-title text-xl font-medium">
+                    <div className="collapse-title text-md md:text-xl font-medium">
                         Do you offer a free trial?
                     </div>
                     <div className="collapse-content">
@@ -59,7 +59,7 @@ export function FAQs() {
                 </div>
                 <div tabIndex={0}
                      className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                    <div className="collapse-title text-xl font-medium">
+                    <div className="collapse-title text-md md:text-xl font-medium">
                         Can I cancel my subscription at any time?
                     </div>
                     <div className="collapse-content">
@@ -72,7 +72,7 @@ export function FAQs() {
                 </div>
                 <div tabIndex={0}
                      className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                    <div className="collapse-title text-xl font-medium">
+                    <div className="collapse-title text-md md:text-xl font-medium">
                         What kind of support can I expect?
                     </div>
                     <div className="collapse-content">

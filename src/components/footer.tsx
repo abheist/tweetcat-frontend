@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import {BsTwitter} from "react-icons/bs";
 
-export function Footer() {
-    return <div className={`bg-gray-900`}>
+export function Footer({className = ""}) {
+    return <div className={`bg-gray-900 ${className}`}>
         <footer className="footer container mx-auto px-16 py-24 text-gray-50">
             <div className={`flex flex-col items-center -mt-4`}>
                 <Image src={`/tweetcat_logo.png`} alt={"tweetcat logo"} width={150} height={150}/>
