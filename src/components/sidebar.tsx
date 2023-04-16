@@ -3,19 +3,19 @@ import React, {ReactNode} from "react";
 import Link from "next/link";
 import CustomerPortalButton from "@/components/customerPortalButton";
 import {logout} from "@/utils/fetchMiddleware";
+import Image from "next/image";
 
 interface SideBarAppIconProps {
-    icon: ReactNode
     tooltip?: string
     link: string
 }
 
-function SideBarAppIcon({icon, tooltip, link}: SideBarAppIconProps) {
+function SideBarAppIcon({tooltip, link}: SideBarAppIconProps) {
     return (
         <div className="tooltip tooltip-right" data-tip={tooltip}>
             <Link href={link}>
-                <button className="btn btn-ghost">
-                    {icon}
+                <button className="btn btn-ghost btn-square p-0">
+                    <Image src={`/tweetcat_logo.png`} alt={"tweetcat logo"} width={60} height={60}/>
                 </button>
             </Link>
         </div>
@@ -24,15 +24,15 @@ function SideBarAppIcon({icon, tooltip, link}: SideBarAppIconProps) {
 
 export default function Sidebar() {
     return (
-        <div className={`flex fixed w-16 border-r h-screen bg-blue-100 py-4 z-10`}>
+        <div className={`flex fixed w-16 h-screen py-4 z-10`}>
             <div className={`flex-grow flex flex-col items-center`}>
-                <SideBarAppIcon icon={"N"} link={'/'}/>
+                <SideBarAppIcon link={'/'}/>
 
                 <div className={`flex-grow`}></div>
 
-                <SideBarAppIcon icon={<FiHome/>} tooltip={`Home`} link={`/home`}/>
+                {/*<SideBarAppIcon icon={<FiHome/>} tooltip={`Home`} link={`/home`}/>*/}
                 {/*<SideBarAppIcon icon={<FiFeather/>} tooltip={`Tweet`} link={`tweet`}/>*/}
-                <SideBarAppIcon icon={<FiFeather/>} tooltip={`Tweets`} link={`tweets`}/>
+                {/*<SideBarAppIcon icon={<FiFeather/>} tooltip={`Tweets`} link={`tweets`}/>*/}
                 {/*<SideBarAppIcon icon={<FiCalendar/>} tooltip={`Calendar`} link={`calender`}/>*/}
                 {/*<SideBarAppIcon icon={<FiTrendingUp/>} tooltip={`Analytics`} link={`analytics`}/>*/}
 
