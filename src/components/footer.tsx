@@ -4,7 +4,7 @@ import {BsTwitter} from "react-icons/bs";
 
 export function Footer({className = ""}) {
     return <div className={`bg-gray-900 ${className}`}>
-        <footer className="footer container mx-auto px-16 py-24 text-gray-50">
+        <footer className="footer container mx-auto px-16 py-24 text-gray-50 max-w-7xl">
             <div className={`flex flex-col items-center -mt-4`}>
                 <Image src={`/tweetcat_logo.png`} alt={"tweetcat logo"} width={150} height={150}/>
                 <p className={`text-md`}>© TweetCat 2023.<br/>All rights reserved.</p>

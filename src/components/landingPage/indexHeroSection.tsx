@@ -6,7 +6,7 @@ interface IndexHeroSectionProps {
 }
 
 export function IndexHeroSection({onClick}: IndexHeroSectionProps) {
-    return <div className={`container mx-auto pt-24`}>
+    return <div className={`container mx-auto pt-24 px-4`}>
         <div className={`flex flex-col items-center text-center gap-y-6`}>
             <Image src={`/tweetcat_logo.png`} alt={"tweetcat logo"} width={200} height={200}/>
             <h1 className={`text-6xl lg:text-9xl font-black`}>TweetCat</h1>
