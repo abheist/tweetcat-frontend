@@ -54,7 +54,7 @@ export default function TwitterSuccess() {
             </Head>
             <main className={`h-screen flex justify-center items-center`}>
                 <div>
-                    <div className={`mt-8`}>{JSON.stringify(data)}</div>
+                    <div className={`mt-8`}>Loading...</div>
                 </div>
             </main>
         </>
