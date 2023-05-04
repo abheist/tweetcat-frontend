@@ -12,6 +12,7 @@ import {Benefits} from "@/components/landingPage/benefits";
 import {PainPointsSection} from "@/components/landingPage/painPointsSection";
 import {AnalyticsSection} from "@/components/landingPage/analyticsSection";
 import {IndexHeroSection} from "@/components/landingPage/indexHeroSection";
+import {ProductDisplay} from "@/components/productDisplay";
 
 // const inter = Inter({subsets: ['latin']})
 
@@ -72,6 +73,7 @@ export default function Home() {
                     <Benefits onClick={() => handleLoginWithTwitter()}/>
                     <AnalyticsSection onClick={() => handleLoginWithTwitter()}/>
                     <Testimonials/>
+                    <ProductDisplay/>
                     <FAQs/>
                     <Footer className={`mt-12`}/>
                 </Layout>

@@ -11,13 +11,13 @@ export function Footer({className = ""}) {
             </div>
             <div>
                 <span className="footer-title">Product</span>
-                <Link href={`pricing`} className="link link-hover">Pricing</Link>
-                <Link href={`affliates`} className="link link-hover">Affliates</Link>
+                <Link href={`pricing`} className="link link-hover line-through">Pricing</Link>
+                <Link href={`affliates`} className="link link-hover line-through">Affliates</Link>
             </div>
             <div>
                 <span className="footer-title">Updates</span>
-                <Link href={`/contact`} className="link link-hover">Contact</Link>
-                <Link href={`/blog`} className="link link-hover">Blog</Link>
+                <Link href={`/contact`} className="link link-hover line-through">Contact</Link>
+                <Link href={`/blog`} className="link link-hover line-through">Blog</Link>
             </div>
             <div>
                 <span className="footer-title">Legal</span>

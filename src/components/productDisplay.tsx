@@ -1,6 +1,5 @@
 import {useMutation} from "react-query";
 import {axiosPrivate} from "@/utils/axiosPrivate";
-import Layout from "@/components/layout";
 import {PricingCard} from "@/components/pricingCard";
 import {AboutSubscriptionCard} from "@/components/aboutSubscriptionCard";
 
@@ -20,19 +19,17 @@ export const ProductDisplay = () => {
     }
 
     return (
-        <Layout className={`bg-white`}>
-            <div className={`container mx-auto flex justify-center min-h-screen py-24 sm:py-30`}>
-                <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <div className="mx-auto max-w-2xl sm:text-center">
-                        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                            Grow your audience like a PRO
-                        </h2>
-                        <p className="mt-6 text-lg leading-8 text-gray-600">
-                            With the right tools, you can grow your business and reach new customers. Here, we are
-                            consistently working to provide you with the best tools to help you grow your business
-                            online.
-                        </p>
-                    </div>
+        <div className={``}>
+            <div className={`container mx-auto py-40 flex flex-col items-center max-w-7xl px-4`}>
+                <h2 className={`text-3xl md:text-7xl font-black text-center w-4/5 leading-snug tracking-wide`}>
+                    Grow your audience like a PRO
+                </h2>
+                <h3 className={`text-lg lg:text-2xl font-medium text-center w-4/5 mt-6 leading-relaxed`}>
+                    With the right tools, you can grow your business and reach new customers. Here, we are
+                    consistently working to provide you with the best tools to help you grow your business
+                    online.
+                </h3>
+                <div className={`flex flex-col items-center gap-y-8 mt-12`}>
                     <div
                         className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
                         <AboutSubscriptionCard/>
@@ -41,7 +38,7 @@ export const ProductDisplay = () => {
                     </div>
                 </div>
             </div>
-        </Layout>
+        </div>
     )
 };
 
