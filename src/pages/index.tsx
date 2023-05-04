@@ -72,7 +72,7 @@ export default function Home() {
                     <PainPointsSection onClick={() => handleLoginWithTwitter()}/>
                     <Benefits onClick={() => handleLoginWithTwitter()}/>
                     <AnalyticsSection onClick={() => handleLoginWithTwitter()}/>
-                    <Testimonials/>
+                    {/*<Testimonials/>*/}
                     <ProductDisplay/>
                     <FAQs/>
                     <Footer className={`mt-12`}/>
